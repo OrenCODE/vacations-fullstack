@@ -28,7 +28,6 @@ class Register extends Component <IRegisterState> {
         }
     };
 
-
     onChange = (event: any) => {
         this.setState({[event.target.name]: event.target.value})
     };
