@@ -11,9 +11,10 @@ export interface IRegisterState {
     password: string
     password2: string
 
-    //REDUX PROP TYPES//
-    registerUser: (newUser: Record<string, any>) => void,
+    // REDUX PROP TYPES //
+    registerUser: (newUser: Record<string, any>, history: any) => void,
     auth: Record<string, any>
+    history: Record<any,any> //FIX HERE//
     errors: Record<any, null>
 }
 
@@ -34,15 +35,17 @@ class Register extends Component <IRegisterState> {
         }
     };
 
+    componentDidMount(): void {
+        if(this.props.auth.isAuthenticated){
+            this.props.history.push('/dashboard')
+        }
+    }
+
     componentWillReceiveProps(nextProps: Readonly<IRegisterState>, nextContext: any): void {
         if (nextProps.errors) {
            this.setState({errors: nextProps.errors})
         }
     }
-
-    onChange = (event: any) => {
-        this.setState({[event.target.name]: event.target.value})
-    };
 
     onSubmit = (event: any) => {
         event.preventDefault();
@@ -55,7 +58,11 @@ class Register extends Component <IRegisterState> {
             password2: this.state.password2,
         };
 
-        this.props.registerUser(newUser)
+        this.props.registerUser(newUser, this.props.history)
+    };
+
+    onChange = (event: any) => {
+        this.setState({[event.target.name]: event.target.value})
     };
 
     render() {
@@ -143,4 +150,5 @@ const mapStateToProps = (state: any) => ({
     errors: state.errors
 });
 
-export default connect(mapStateToProps, {registerUser})(Register);
+// @ts-ignore //FIX-HERE//
+export default connect(mapStateToProps, {registerUser})(withRouter(Register));
