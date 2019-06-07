@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
-import axios from 'axios';
+import {withRouter} from "react-router-dom";
 import classnames from 'classnames';
+import {connect} from 'react-redux';
+import {registerUser} from "../../actions/authActions";
 
 export interface IRegisterState {
     firstName: string
@@ -8,6 +10,10 @@ export interface IRegisterState {
     email: string
     password: string
     password2: string
+
+    //REDUX PROP TYPES//
+    registerUser: (newUser: Record<string, any>) => void,
+    auth: Record<string, any>
     errors: Record<any, null>
 }
 
@@ -28,6 +34,12 @@ class Register extends Component <IRegisterState> {
         }
     };
 
+    componentWillReceiveProps(nextProps: Readonly<IRegisterState>, nextContext: any): void {
+        if (nextProps.errors) {
+           this.setState({errors: nextProps.errors})
+        }
+    }
+
     onChange = (event: any) => {
         this.setState({[event.target.name]: event.target.value})
     };
@@ -43,9 +55,7 @@ class Register extends Component <IRegisterState> {
             password2: this.state.password2,
         };
 
-        axios.post('/api/users/register', newUser)
-            .then(res => console.log(res.data))
-            .catch(err => this.setState({errors: err.response.data}))
+        this.props.registerUser(newUser)
     };
 
     render() {
@@ -128,4 +138,9 @@ class Register extends Component <IRegisterState> {
     }
 }
 
-export default Register;
+const mapStateToProps = (state: any) => ({
+    auth: state.auth,
+    errors: state.errors
+});
+
+export default connect(mapStateToProps, {registerUser})(Register);
