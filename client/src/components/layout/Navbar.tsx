@@ -2,9 +2,10 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {logoutUser} from "../../actions/authActions";
+import {authObject} from "../../interface/types";
 
 interface INavbar {
-    auth: Record<string, any>
+    auth: authObject
     logoutUser: () => void
 }
 

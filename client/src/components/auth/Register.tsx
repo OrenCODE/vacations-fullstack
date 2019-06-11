@@ -3,24 +3,27 @@ import {withRouter} from "react-router-dom";
 import classnames from 'classnames';
 import {connect} from 'react-redux';
 import {registerUser} from "../../actions/authActions";
+import {strObject, errObject, pageHistory, authObject} from "../../interface/types";
 
-export interface IRegisterState {
+interface IRegisterDetails {
     firstName: string
     lastName: string
     email: string
     password: string
     password2: string
+    errors: errObject
+}
 
-    // REDUX PROP TYPES //
-    registerUser: (newUser: Record<string, any>, history: any) => void,
-    auth: Record<string, any>
-    history: Record<any,any> //FIX HERE//
-    errors: Record<any, null>
+interface IRegisterState {
+    registerUser: (newUser: strObject, history: pageHistory) => void,
+    auth: authObject
+    history: pageHistory
+    errors: errObject
 }
 
 class Register extends Component <IRegisterState> {
 
-    state = {
+    state: IRegisterDetails = {
         firstName: '',
         lastName: '',
         email: '',
@@ -36,14 +39,14 @@ class Register extends Component <IRegisterState> {
     };
 
     componentDidMount(): void {
-        if(this.props.auth.isAuthenticated){
+        if (this.props.auth.isAuthenticated) {
             this.props.history.push('/dashboard')
         }
     }
 
     componentWillReceiveProps(nextProps: Readonly<IRegisterState>, nextContext: any): void {
         if (nextProps.errors) {
-           this.setState({errors: nextProps.errors})
+            this.setState({errors: nextProps.errors})
         }
     }
 
@@ -150,5 +153,4 @@ const mapStateToProps = (state: any) => ({
     errors: state.errors
 });
 
-// @ts-ignore //FIX-HERE//
-export default connect(mapStateToProps, {registerUser})(withRouter(Register));
+export default connect(mapStateToProps, {registerUser})(withRouter(Register as any));

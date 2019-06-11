@@ -1,17 +1,22 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
+import {authObject, pageHistory} from "../../interface/types";
 
 interface ILanding {
-    auth: Record<string, any>
-    history: Record<any, any>
+    auth: authObject
+    history: pageHistory
 }
 
-class Landing extends Component <ILanding>{
+class Landing extends Component <ILanding> {
 
     componentDidMount(): void {
-        if(this.props.auth.isAuthenticated){
-            this.props.history.push('/dashboard')
+        if (this.props.auth.isAuthenticated && this.props.auth.user.id === "5cec896f8c8a9d86fe287dc3") { //FIX HERE//
+            this.props.history.push('/admin')
+        } else {
+            if (this.props.auth.isAuthenticated) {
+                this.props.history.push('/dashboard')
+            }
         }
     }
 

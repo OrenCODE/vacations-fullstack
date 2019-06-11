@@ -2,21 +2,24 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import classnames from 'classnames';
 import {loginUser} from "../../actions/authActions";
+import {strObject, errObject, pageHistory, authObject} from "../../interface/types";
 
-export interface ILoginState {
+interface ILoginDetails {
     email: string
     password: string
+    errors: errObject
+}
 
-    // REDUX PROP TYPES //
-    loginUser: (userData: Record<string, any>) => void,
-    auth: Record<string, any>
-    history: Record<any, any> //FIX HERE//
-    errors: Record<any, null>
+interface ILoginState {
+    loginUser: (userData: strObject) => void,
+    auth: authObject
+    history: pageHistory
+    errors: errObject
 }
 
 class Login extends Component <ILoginState> {
 
-    state = {
+    state: ILoginDetails = {
         email: '',
         password: '',
         errors: {
@@ -26,13 +29,18 @@ class Login extends Component <ILoginState> {
     };
 
     componentDidMount(): void {
-        if(this.props.auth.isAuthenticated){
+        if (this.props.auth.isAuthenticated) {
             this.props.history.push('/dashboard')
         }
     }
 
     componentWillReceiveProps(nextProps: Readonly<ILoginState>, nextContext: any): void {
         if (nextProps.auth.isAuthenticated) {
+
+            if(this.state.email === 'orencodes@gmail.com'){ //FIX THIS WITH isADMIN ON DATABASE//
+                this.props.history.push('/admin');
+                return;
+            }
             this.props.history.push('/dashboard');
         }
 
