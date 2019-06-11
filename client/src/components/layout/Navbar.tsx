@@ -4,12 +4,12 @@ import {connect} from 'react-redux';
 import {logoutUser} from "../../actions/authActions";
 import {authObject} from "../../interface/types";
 
-interface INavbar {
+interface INavbarProps {
     auth: authObject
     logoutUser: () => void
 }
 
-class Navbar extends Component <INavbar> {
+class Navbar extends Component <INavbarProps> {
 
     onLogoutClick = (event: any) => {
         event.preventDefault();

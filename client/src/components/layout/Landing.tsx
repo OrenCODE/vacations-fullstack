@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {authObject, pageHistory} from "../../interface/types";
+import {authObject, History} from "../../interface/types";
 
-interface ILanding {
+interface ILandingProps {
     auth: authObject
-    history: pageHistory
+    history: History
 }
 
-class Landing extends Component <ILanding> {
+class Landing extends Component <ILandingProps> {
 
     componentDidMount(): void {
         if (this.props.auth.isAuthenticated && this.props.auth.user.id === "5cec896f8c8a9d86fe287dc3") { //FIX HERE//

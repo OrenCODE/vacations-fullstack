@@ -1,16 +1,18 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {authObject, pageHistory} from "../../interface/types";
+import {authObject, History} from "../../interface/types";
 
-interface IUser {
+interface IUserProps {
     auth: authObject,
-    history: pageHistory
+    history: History
 }
 
-class User extends Component <IUser> {
+class User extends Component <IUserProps> {
 
     componentDidMount(): void {
-        if (this.props.auth.isAuthenticated) {
+        if (this.props.auth.isAuthenticated && this.props.auth.user.isAdmin === true) {
+            this.props.history.push('/admin')
+        } else {
             this.props.history.push('/dashboard')
         }
     }

@@ -17,8 +17,8 @@ const User = require('../../models/User');
 // @access  public
 router.get('/test', (req, res) => res.json({msg: "Users Works"}));
 
-// @route   GET api/users/register
-// @desc    Register users
+// @route   POST api/users/register
+// @desc    Register new user
 // @access  public
 router.post('/register', (req, res) => {
     const {errors, isValid} = validateRegisterInput(req.body);
@@ -54,7 +54,7 @@ router.post('/register', (req, res) => {
     })
 });
 
-// @route   GET api/users/login
+// @route   POST api/users/login
 // @desc    Login User / Returning JWT Token
 // @access  public
 router.post('/login', (req, res) => {
@@ -83,7 +83,7 @@ router.post('/login', (req, res) => {
                 if (isMatch) {
                     // User Matched
                     const payload = {
-                        id: user.id, firstName: user.firstName, lastName: user.lastName
+                        id: user.id, firstName: user.firstName, lastName: user.lastName , isAdmin: user.isAdmin
                     }; // Create JWT Payload
 
                     // Sign Token

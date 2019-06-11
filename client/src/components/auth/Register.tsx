@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import {withRouter} from "react-router-dom";
+import {RouteComponentProps, withRouter} from "react-router-dom";
 import classnames from 'classnames';
 import {connect} from 'react-redux';
 import {registerUser} from "../../actions/authActions";
-import {strObject, errObject, pageHistory, authObject} from "../../interface/types";
+import {authObject, errObject, History, strObject} from "../../interface/types";
 
-interface IRegisterDetails {
+interface IRegisterState {
     firstName: string
     lastName: string
     email: string
@@ -14,16 +14,15 @@ interface IRegisterDetails {
     errors: errObject
 }
 
-interface IRegisterState {
-    registerUser: (newUser: strObject, history: pageHistory) => void,
+interface IRegisterProps extends RouteComponentProps {
+    registerUser: (newUser: strObject, history: History) => void,
     auth: authObject
-    history: pageHistory
+    history: History
     errors: errObject
 }
 
-class Register extends Component <IRegisterState> {
-
-    state: IRegisterDetails = {
+class Register extends Component<IRegisterProps, IRegisterState> {
+    state: IRegisterState = {
         firstName: '',
         lastName: '',
         email: '',
@@ -44,7 +43,7 @@ class Register extends Component <IRegisterState> {
         }
     }
 
-    componentWillReceiveProps(nextProps: Readonly<IRegisterState>, nextContext: any): void {
+    componentWillReceiveProps(nextProps: Readonly<IRegisterProps>, nextContext: any): void {
         if (nextProps.errors) {
             this.setState({errors: nextProps.errors})
         }
@@ -65,7 +64,7 @@ class Register extends Component <IRegisterState> {
     };
 
     onChange = (event: any) => {
-        this.setState({[event.target.name]: event.target.value})
+        this.setState({[event.target.name]: event.target.value} as IRegisterState)
     };
 
     render() {

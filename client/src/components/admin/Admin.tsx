@@ -1,16 +1,16 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {authObject, pageHistory} from "../../interface/types";
+import {authObject, History} from "../../interface/types";
 
-interface IAdmin {
+interface IAdminProps {
     auth: authObject,
-    history: pageHistory
+    history: History
 }
 
-class Admin extends Component <IAdmin> {
+class Admin extends Component <IAdminProps> {
 
     componentDidMount(): void {
-        if (this.props.auth.isAuthenticated && this.props.auth.user.id === "5cec896f8c8a9d86fe287dc3") { //FIX HERE//
+        if (this.props.auth.isAuthenticated && this.props.auth.user.isAdmin === true) {
             this.props.history.push('/admin')
         } else {
             this.props.history.push('/dashboard')

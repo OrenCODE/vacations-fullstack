@@ -2,24 +2,24 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import classnames from 'classnames';
 import {loginUser} from "../../actions/authActions";
-import {strObject, errObject, pageHistory, authObject} from "../../interface/types";
+import {strObject, errObject, History, authObject} from "../../interface/types";
 
-interface ILoginDetails {
+interface ILoginState {
     email: string
     password: string
     errors: errObject
 }
 
-interface ILoginState {
+interface ILoginProps {
     loginUser: (userData: strObject) => void,
     auth: authObject
-    history: pageHistory
+    history: History
     errors: errObject
 }
 
-class Login extends Component <ILoginState> {
+class Login extends Component <ILoginProps, ILoginState> {
 
-    state: ILoginDetails = {
+    state: ILoginState = {
         email: '',
         password: '',
         errors: {
@@ -34,16 +34,14 @@ class Login extends Component <ILoginState> {
         }
     }
 
-    componentWillReceiveProps(nextProps: Readonly<ILoginState>, nextContext: any): void {
+    componentWillReceiveProps(nextProps: Readonly<ILoginProps>, nextContext: any): void {
         if (nextProps.auth.isAuthenticated) {
-
-            if(this.state.email === 'orencodes@gmail.com'){ //FIX THIS WITH isADMIN ON DATABASE//
+            if (nextProps.auth.user.isAdmin === true) {
                 this.props.history.push('/admin');
                 return;
             }
             this.props.history.push('/dashboard');
         }
-
         if (nextProps.errors) {
             this.setState({errors: nextProps.errors})
         }
@@ -61,7 +59,7 @@ class Login extends Component <ILoginState> {
     };
 
     onChange = (event: any) => {
-        this.setState({[event.target.name]: event.target.value})
+        this.setState({[event.target.name]: event.target.value} as ILoginState)
     };
 
     render() {
