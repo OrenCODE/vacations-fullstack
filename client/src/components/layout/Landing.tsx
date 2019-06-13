@@ -11,7 +11,7 @@ interface ILandingProps {
 class Landing extends Component <ILandingProps> {
 
     componentDidMount(): void {
-        if (this.props.auth.isAuthenticated && this.props.auth.user.id === "5cec896f8c8a9d86fe287dc3") { //FIX HERE//
+        if (this.props.auth.isAuthenticated && this.props.auth.user.isAdmin === true) {
             this.props.history.push('/admin')
         } else {
             if (this.props.auth.isAuthenticated) {
