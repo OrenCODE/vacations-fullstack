@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {IUserProps} from "./User";
-import axios from 'axios';
+import {formatDate} from "../../utils/formatDate";
 
 export interface IVacationProps {
     _id: string
@@ -12,27 +11,21 @@ export interface IVacationProps {
     startDate: Date
     endDate: Date
     price: number
+    onFollow: (id: string) => void
 }
 
 class Vacation extends Component <IVacationProps> {
+
     render() {
-        const {
-            numOfFollowers,
-            description,
-            destination,
-            photoURL,
-            startDate,
-            endDate,
-            price,
-        } = this.props;
+        const {_id, numOfFollowers, description, destination, photoURL, startDate, endDate, price, onFollow} = this.props;
         return (
                 <div className="col-md-4">
                     <div className="single-destinations">
                         <div className="thumb">
                             <img src={photoURL} alt={''}/>
                         </div>
-                        <div className="details">
-                            <h4>{description}</h4>
+                        <div className="lead">
+                            <h5>{description}</h5>
                             <p>
                                 {destination}
                             </p>
@@ -43,11 +36,11 @@ class Vacation extends Component <IVacationProps> {
                                 </li>
                                 <li className="d-flex justify-content-between align-items-center">
                                     <span>Start Date</span>
-                                    <span>{startDate}</span>
+                                    <span>{formatDate(startDate)}</span>
                                 </li>
                                 <li className="d-flex justify-content-between align-items-center">
                                     <span>End Date</span>
-                                    <span>{endDate}</span>
+                                    <span>{formatDate(endDate)}</span>
                                 </li>
                                 <li className="d-flex justify-content-between align-items-center">
                                     <span>Following</span>
@@ -58,6 +51,7 @@ class Vacation extends Component <IVacationProps> {
                                     <a href="/" className="price-btn">{price}</a>
                                 </li>
                             </ul>
+                            <button onClick={() => onFollow(_id)}>Follow</button>
                         </div>
                     </div>
                 </div>
