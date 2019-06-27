@@ -5,13 +5,14 @@ import {authObject, errObject, History} from "../../interface/types";
 import VacationItem, {IVacationItemProps} from "./VacationItem";
 
 interface IAdminState {
-    vacations: IVacationItemProps[],
+    vacations: IVacationItemProps[]
 }
 
 export interface IAdminProps {
-    auth: authObject,
-    history: History,
-    createVacation: (vacationData: any, history: History) => void,
+    auth: authObject
+    history: History
+    createVacation: (vacationData: any, history: History) => void
+    deleteVacation: (id: string) => void
     errors: errObject
 }
 
