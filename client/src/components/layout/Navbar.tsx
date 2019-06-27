@@ -18,6 +18,7 @@ class Navbar extends Component <INavbarProps> {
 
     render() {
         const {isAuthenticated} = this.props.auth;
+        const {isAdmin} = this.props.auth.user;
         const authLinks = (
             <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
@@ -39,6 +40,22 @@ class Navbar extends Component <INavbarProps> {
             </ul>
         );
 
+        const adminLinks = (
+            <div className="collapse navbar-collapse" id="mobile-nav">
+                <ul className="navbar-nav mr-auto">
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/addVacation"> Add Vacation
+                        </Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/reports"> Reports
+                        </Link>
+                    </li>
+                </ul>
+            </div>
+
+        );
+
         return (
             <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
                 <div className="container">
@@ -54,6 +71,7 @@ class Navbar extends Component <INavbarProps> {
                                 </Link>
                             </li>
                         </ul>
+                        {isAdmin ? adminLinks : null}
                         {isAuthenticated ? authLinks : guestLinks}
                     </div>
                 </div>

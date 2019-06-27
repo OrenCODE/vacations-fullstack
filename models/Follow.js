@@ -12,7 +12,7 @@ const followSchema = new Schema({
         ref: 'vacations'
     },
     vacationId: {
-        type: String
+        type: Schema.Types.ObjectId,
     },
     followerEmail: {
         type: String

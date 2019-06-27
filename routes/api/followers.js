@@ -11,8 +11,8 @@ const Follow = require('../../models/Follow');
 // @route   GET api/followers/test
 // @desc    Tests followers route
 // @access  public
-router.get('/test', (req, res) => res.json({msg: "followers Works"})
-);
+// router.get('/test', (req, res) => res.json({msg: "followers Works"})
+// );
 
 // @route   GET api/followers
 // @desc    followers route all followers
@@ -27,8 +27,7 @@ router.get('/', (req, res) => {
 // @desc    followers route
 // @access  private
 
-router.get(
-    '/', passport.authenticate('jwt', {session: false}),
+router.get('/', passport.authenticate('jwt', {session: false}),
     (req, res) => {
         const errors = {};
         Follow.findOne({user: req.user.id})

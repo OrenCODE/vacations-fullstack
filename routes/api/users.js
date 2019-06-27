@@ -83,7 +83,11 @@ router.post('/login', (req, res) => {
                 if (isMatch) {
                     // User Matched
                     const payload = {
-                        id: user.id, firstName: user.firstName, lastName: user.lastName , isAdmin: user.isAdmin
+                        id: user.id,
+                        firstName: user.firstName,
+                        lastName: user.lastName,
+                        isAdmin: user.isAdmin,
+                        vacationsFollowed: user.vacationsFollowed
                     }; // Create JWT Payload
 
                     // Sign Token
@@ -116,5 +120,20 @@ router.get('/current', passport.authenticate('jwt', {session: false}), (req, res
         email: req.user.email
     })
 });
+
+router.put('/current/follow/:id', passport.authenticate('jwt', {session: false}),
+    (req, res) => {
+        User.findOne({
+            user: req.user.id,
+            vacationId: req.params.id
+        })
+            .then(user => {
+                if (!user) {
+                    res.send('user not found')
+                } else {
+                    User.updateOne({_id: req.user.id}, {$push: {vacationsFollowed: req.params.id}}, {new: true})
+                }
+            })
+    });
 
 module.exports = router;

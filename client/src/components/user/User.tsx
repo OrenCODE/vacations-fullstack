@@ -27,10 +27,11 @@ class User extends Component <IUserProps, IUserState> {
             this.props.history.push('/admin')
         } else {
             this.props.history.push('/dashboard');
-            axios.get('/api/vacations')
-                .then(res => this.setState({
+            axios.get('/api/vacations/')
+                .then(res => {
+                    this.setState({
                     vacations: res.data
-                }))
+                })})
         }
     }
 
@@ -40,7 +41,7 @@ class User extends Component <IUserProps, IUserState> {
 
         axios.post(`api/followers/${id}`, {headers: {Authorization: bearerToken}})
             .then((res) => {
-                axios.get('/api/vacations')
+                axios.get('/api/vacations/')
                     .then(res => this.setState({
                         vacations: res.data
                     }))
@@ -49,10 +50,11 @@ class User extends Component <IUserProps, IUserState> {
     };
 
     render() {
+        const {auth} = this.props;
         const {vacations} = this.state;
         return (
             <div className="container">
-                <h3 className="lead">Hello {this.props.auth.user.firstName} {this.props.auth.user.lastName}</h3>
+                <h3 className="lead">Hello {auth.user.firstName} {auth.user.lastName}</h3>
                 <div className="row">
                     {vacations.map(vacation =>
                         <Vacation key={vacation._id} {...vacation} onFollow={this.onFollow}/>
