@@ -12,7 +12,6 @@ export interface IAdminProps {
     auth: authObject
     history: History
     createVacation: (vacationData: any, history: History) => void
-    deleteVacation: (id: string) => void
     errors: errObject
 }
 
@@ -38,6 +37,14 @@ class Admin extends Component <IAdminProps, IAdminState> {
         }
     }
 
+    onVacationDeleted = (id: string) => {
+        const {vacations} = this.state;
+        const vacationsAfterDelete = vacations.filter(vacation => vacation._id !== id);
+        this.setState({
+            vacations: vacationsAfterDelete
+        })
+    };
+
     render() {
         const {vacations} = this.state;
         return (
@@ -45,7 +52,7 @@ class Admin extends Component <IAdminProps, IAdminState> {
                 <h3 className="lead">Hello Admin</h3>
                 <div className="row">
                     {vacations.map(vacation =>
-                        <VacationItem key={vacation._id} {...vacation}/>
+                        <VacationItem key={vacation._id} {...vacation} onVacationDeleted={this.onVacationDeleted}/>
                     )}
                 </div>
             </div>

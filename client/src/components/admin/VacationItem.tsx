@@ -3,6 +3,10 @@ import {connect} from 'react-redux';
 import {deleteVacation} from '../../actions/AdminActions';
 import {formatDate} from "../../utils/formatDate";
 
+interface IVacationItemState {
+    editStatus: boolean
+}
+
 export interface IVacationItemProps {
     _id: string
     numOfFollowers: number
@@ -12,12 +16,21 @@ export interface IVacationItemProps {
     startDate: Date
     endDate: Date
     price: number
+
     deleteVacation: (id: string) => void
+    onVacationDeleted: (id: string) => void
+    editVacation: (id: string) => void
+    onVacationEdited: (id: string) => void
 }
 
-class VacationItem extends Component <IVacationItemProps> {
+class VacationItem extends Component <IVacationItemProps, IVacationItemState> {
+
+    state: IVacationItemState = {
+        editStatus: false
+    };
 
     render() {
+        const {editStatus} = this.state;
         const {_id, numOfFollowers, description, destination, photoURL, startDate, endDate, price} = this.props;
         return (
             <div className="col-md-4">
@@ -26,6 +39,7 @@ class VacationItem extends Component <IVacationItemProps> {
                         <img src={photoURL} alt={''}/>
                     </div>
                     <button className="btn btn-danger btn-sm" onClick={() => this.onDelete(_id)}>Del</button>
+                    <button className="btn btn-secondary btn-sm" onClick={() => this.onEdit(_id)}>Edit</button>
                     <div className="lead">
                         <h5>{description}</h5>
                         <p>
@@ -61,6 +75,11 @@ class VacationItem extends Component <IVacationItemProps> {
 
     onDelete = (id: string) => {
         this.props.deleteVacation(id);
+        this.props.onVacationDeleted(id)
+    };
+
+    onEdit = (id: string) => {
+        this.setState({editStatus: true})
     }
 }
 
@@ -68,4 +87,4 @@ const mapStateToProps = (state: any) => ({
     auth: state.auth
 });
 
-export default connect(mapStateToProps, {deleteVacation})(VacationItem as any);
+export default connect(mapStateToProps, {deleteVacation})(VacationItem);
