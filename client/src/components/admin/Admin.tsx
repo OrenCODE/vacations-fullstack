@@ -45,6 +45,14 @@ class Admin extends Component <IAdminProps, IAdminState> {
         })
     };
 
+    onVacationEdited = (id: string, editedVacationData: any) => {
+        console.log(id, editedVacationData);
+        axios.get('/api/vacations')
+            .then(res => this.setState({
+                vacations: res.data
+            }));
+    };
+
     render() {
         const {vacations} = this.state;
         return (
@@ -52,7 +60,10 @@ class Admin extends Component <IAdminProps, IAdminState> {
                 <h3 className="lead">Hello Admin</h3>
                 <div className="row">
                     {vacations.map(vacation =>
-                        <VacationItem key={vacation._id} {...vacation} onVacationDeleted={this.onVacationDeleted}/>
+                        <VacationItem key={vacation._id} {...vacation}
+                                      onVacationDeleted={this.onVacationDeleted}
+                                      onVacationEdited={this.onVacationEdited}
+                        />
                     )}
                 </div>
             </div>

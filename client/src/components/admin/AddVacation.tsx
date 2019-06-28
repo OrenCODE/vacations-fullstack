@@ -11,7 +11,7 @@ import {createVacation} from "../../actions/AdminActions";
 import {IAdminProps} from "./Admin";
 import {errObject} from "../../interface/types";
 
-interface IAddVacationState {
+export interface IAddVacationState {
     description: string,
     destination: string,
     photoURL: string,

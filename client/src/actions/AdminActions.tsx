@@ -15,10 +15,22 @@ export const createVacation = (vacationData: any, history: any) => (dispatch: an
         );
 };
 
+// Delete a vacation
 export const deleteVacation = (id: any) => (dispatch: any) => {
     axios
         .delete(`/api/vacations/${id}`)
         .then(res => console.log(res.data))
         .catch(err => console.log(err.response.data)
         );
+};
+
+// Edit vacation
+export const editVacation = (id: any, editedVacationData: any) => (dispatch: any) => {
+    // console.log(editedVacationData);
+    axios.put(`/api/vacations/update/${id}`, editedVacationData)
+        .then(res => console.log(res.data))
+        .catch(err => dispatch({
+            type: GET_ERRORS,
+            payload: err.response.data
+        }))
 };

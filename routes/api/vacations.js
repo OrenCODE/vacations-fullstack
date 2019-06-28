@@ -72,7 +72,7 @@ router.delete('/:id', (req, res) => {
 // @access  public
 
 //FIX VACATION PUT METHOD BODY//
-router.put('/:id', (req, res) => {
+router.put('/update/:id', (req, res) => {
     Vacation.findByIdAndUpdate({_id: req.params.id}, req.body).then(() => {
         Vacation.findOne({_id: req.params.id}).then((vacation) => {
             res.json(vacation);
