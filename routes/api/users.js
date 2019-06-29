@@ -158,27 +158,32 @@ router.put('/follow/:id', passport.authenticate('jwt', {session: false}),
 
 router.delete('/follow/:id', passport.authenticate('jwt', {session: false}),
     (req, res) => {
-        User.findOne({
-            _id: req.user.id,
-            vacationsFollowed: {$elemMatch: {[req.params.id]: "vacation"}}
-        })
-            .then( () => {
-                    User.findByIdAndUpdate({_id: req.user.id}, {$pull: {vacationsFollowed: {[req.params.id]: "vacation"}}})
-                        .then(() => {
-                            User.findOne({
-                                _id: req.user.id
-                            })
-                                .then(follow => {
-                                    Vacation.updateOne({_id: req.params.id}, {$inc: {numOfFollowers: -1}}, {new: true})
-                                        .then(() => {
-                                            res.status(200);
-                                            res.json(follow);
-                                        });
-                                });
-                        })
-
+        User.findByIdAndUpdate({_id: req.user.id}, {$pull: {vacationsFollowed: {[req.params.id]: "vacation"}}})
+            .then(() => {
+                User.findOne({
+                    _id: req.user.id
+                })
+                    .then(follow => {
+                        Vacation.updateOne({_id: req.params.id}, {$inc: {numOfFollowers: -1}}, {new: true})
+                            .then(() => {
+                                res.status(200);
+                                res.json(follow);
+                            });
+                    });
             })
     });
 
+// @route   GET api/users/current/follow/:id
+// @desc    get current user with vacationsFollowed
+// @access  Private
+
+router.get('/current/follow/:id', passport.authenticate('jwt', {session: false}),
+    (req, res) => {
+        User.findOne({_id: req.params.id})
+            .then(user =>{
+                res.status(200);
+                res.json(user)
+            })
+    });
 
 module.exports = router;

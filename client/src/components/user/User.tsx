@@ -6,6 +6,7 @@ import Vacation, {IVacationProps} from "./Vacation";
 
 interface IUserState {
     vacations: IVacationProps[]
+    vacationsFollowed: Record<any, any>[]
 }
 
 export interface IUserProps {
@@ -18,7 +19,8 @@ class User extends Component <IUserProps, IUserState> {
     constructor(props: any) {
         super(props);
         this.state = {
-            vacations: []
+            vacations: [],
+            vacationsFollowed: []
         }
     }
 
@@ -30,21 +32,32 @@ class User extends Component <IUserProps, IUserState> {
             axios.get('/api/vacations/')
                 .then(res => {
                     this.setState({
-                    vacations: res.data
-                })})
+                        vacations: res.data
+                    })
+                });
+
+            const userId = this.props.auth.user.id;
+            const bearerToken = localStorage.getItem('jwtToken');
+
+            axios.get(`api/users/current/follow/${userId}`, {headers: {Authorization: bearerToken}})
+                .then((res) => this.setState({vacationsFollowed: res.data}))
+                .catch(err => console.log(err.response.data))
         }
     }
 
-    onFollow = (id: string) => {
+    onFollow = (vacationId: string) => {
         const bearerToken = localStorage.getItem('jwtToken');
-        // console.log(id, bearerToken);
 
-        axios.put(`api/users/follow/${id}`, {headers: {Authorization: bearerToken}})
+        axios.put(`api/users/follow/${vacationId}`, {headers: {Authorization: bearerToken}})
             .then((res) => {
+                this.setState({
+                    vacationsFollowed: res.data
+                });
                 axios.get('/api/vacations/')
                     .then(res => this.setState({
                         vacations: res.data
-                    }))
+
+                    }));
             })
             .catch(err => alert(err.response.data.alreadyfollowed))
     };
