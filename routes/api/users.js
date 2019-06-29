@@ -11,18 +11,14 @@ const validateLoginInput = require('../../validation/login');
 
 // Load User model
 const User = require('../../models/User');
-
-// @route   GET api/users/test
-// @desc    Tests users route
-// @access  public
-router.get('/test', (req, res) => res.json({msg: "Users Works"}));
+const Vacation = require('../../models/Vacation');
 
 // @route   POST api/users/register
 // @desc    Register new user
 // @access  public
+
 router.post('/register', (req, res) => {
     const {errors, isValid} = validateRegisterInput(req.body);
-
     // Check Validation
     if (!isValid) {
         return res.status(400).json(errors);
@@ -57,6 +53,7 @@ router.post('/register', (req, res) => {
 // @route   POST api/users/login
 // @desc    Login User / Returning JWT Token
 // @access  public
+
 router.post('/login', (req, res) => {
 
     const {errors, isValid} = validateLoginInput(req.body);
@@ -112,6 +109,7 @@ router.post('/login', (req, res) => {
 // @route   GET api/users/current
 // @desc    Return current user
 // @access  Private
+
 router.get('/current', passport.authenticate('jwt', {session: false}), (req, res) => {
     res.json({
         id: req.user.id,
@@ -121,19 +119,66 @@ router.get('/current', passport.authenticate('jwt', {session: false}), (req, res
     })
 });
 
-router.put('/current/follow/:id', passport.authenticate('jwt', {session: false}),
+// @route   PUT api/users/follow/:id
+// @desc    add vacationId as follow to the current user
+// @access  Private
+
+router.put('/follow/:id', passport.authenticate('jwt', {session: false}),
     (req, res) => {
+        const errors = {};
         User.findOne({
-            user: req.user.id,
-            vacationId: req.params.id
+            _id: req.user.id,
+            vacationsFollowed: {$elemMatch: {[req.params.id]: "vacation"}}
         })
-            .then(user => {
-                if (!user) {
-                    res.send('user not found')
+            .then(vacationId => {
+                if (vacationId) {
+                    errors.alreadyfollowed = 'You already followed this vacation';
+                    return res.status(400).json(errors);
                 } else {
-                    User.updateOne({_id: req.user.id}, {$push: {vacationsFollowed: req.params.id}}, {new: true})
+                    User.findOneAndUpdate({_id: req.user.id}, {$push: {vacationsFollowed: {[req.params.id]: "vacation"}}})
+                        .then(() => {
+                            User.findOne({
+                                _id: req.user.id
+                            })
+                                .then(follow => {
+                                    Vacation.updateOne({_id: req.params.id}, {$inc: {numOfFollowers: 1}}, {new: true})
+                                        .then(() => {
+                                            res.status(200);
+                                            res.json(follow);
+                                        });
+                                });
+                        })
                 }
             })
     });
+
+// @route   DELETE api/users/follow/:id
+// @desc    delete vacationId as follow to the current user
+// @access  Private
+
+router.delete('/follow/:id', passport.authenticate('jwt', {session: false}),
+    (req, res) => {
+        User.findOne({
+            _id: req.user.id,
+            vacationsFollowed: {$elemMatch: {[req.params.id]: "vacation"}}
+        })
+            .then( () => {
+                    User.findByIdAndUpdate({_id: req.user.id}, {$pull: {vacationsFollowed: {[req.params.id]: "vacation"}}})
+                        .then(() => {
+                            User.findOne({
+                                _id: req.user.id
+                            })
+                                .then(follow => {
+                                    Vacation.updateOne({_id: req.params.id}, {$inc: {numOfFollowers: -1}}, {new: true})
+                                        .then(() => {
+                                            res.status(200);
+                                            res.json(follow);
+                                        });
+                                });
+                        })
+
+            })
+    });
+
 
 module.exports = router;

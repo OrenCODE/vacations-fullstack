@@ -94,4 +94,4 @@ router.delete('/:id', passport.authenticate('jwt', {session: false}),
             )
     });
 
-module.exports = router;
+// module.exports = router;

@@ -15,7 +15,7 @@ interface IEditModalProps {
     onVacationEdited: (id: string, editedVacationData: Record<any, any>) => void
 }
 
-class EditMovieModal extends Component <IEditModalProps, IAddVacationState> {
+class EditVacationModal extends Component <IEditModalProps, IAddVacationState> {
     state: IAddVacationState = {
         description: '',
         destination: '',
@@ -73,46 +73,43 @@ class EditMovieModal extends Component <IEditModalProps, IAddVacationState> {
                                     <div>
                                         <small className="form-text text-muted">Description</small>
                                         <input
-                                            className="form-control form-control-lg"
+                                            className="form-control form-control-sm"
                                             name={"description"}
                                             type={"text"}
                                             placeholder={vacationField.description}
                                             value={this.state.description}
-                                            onChange={this.onChange}
-                                        />
+                                            onChange={this.onChange}/>
                                     </div>
                                     <div>
                                         <small className="form-text text-muted">Destination</small>
                                         <input
-                                            className="form-control form-control-lg"
+                                            className="form-control form-control-sm"
                                             name={"destination"}
                                             type={"text"}
                                             placeholder={vacationField.destination}
                                             value={this.state.destination}
-                                            onChange={this.onChange}
-                                        />
+                                            onChange={this.onChange}/>
                                     </div>
                                     <div>
                                         <small className="form-text text-muted">Photo URL</small>
                                         <input
-                                            className="form-control form-control-lg"
+                                            className="form-control form-control-sm"
                                             name={"photoURL"}
                                             type={"text"}
                                             placeholder={vacationField.photoURL}
                                             value={this.state.photoURL}
-                                            onChange={this.onChange}
-                                        />
+                                            onChange={this.onChange}/>
                                     </div>
                                 </div>
                                 <div className="form-group">
                                     <small className="form-text text-muted">Start Date</small>
                                     <DatePicker
-                                        className="form-control form-control-lg"
+                                        className="form-control form-control-sm"
                                         selected={this.state.startDate}
                                         onChange={this.handleStartDateChange}/>
                                     <small className="form-text text-muted">End Date</small>
                                     <DatePicker
-                                        className="form-control form-control-lg"
+                                        className="form-control form-control-sm"
                                         selected={this.state.endDate}
                                         onChange={this.handleEndDateChange}/>
                                 </div>
@@ -120,12 +117,11 @@ class EditMovieModal extends Component <IEditModalProps, IAddVacationState> {
                                     <small className="form-text text-muted">Price
                                     </small>
                                     <input type="number"
-                                           className="form-control form-control-lg"
+                                           className="form-control form-control-sm"
                                            placeholder="Price per person"
                                            name="price"
                                            value={this.state.price}
-                                           onChange={this.onChange}
-                                    />
+                                           onChange={this.onChange}/>
                                 </div>
                             </div>
                         ))}
@@ -146,4 +142,4 @@ const mapStateToProps = (state: any) => ({
     errors: state.erorrs
 });
 
-export default connect(mapStateToProps, {editVacation})(EditMovieModal)
+export default connect(mapStateToProps, {editVacation})(EditVacationModal)

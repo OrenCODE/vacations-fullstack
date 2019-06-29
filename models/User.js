@@ -34,10 +34,10 @@ const UserSchema = new Schema({
         type: Boolean,
         default: false
     },
-    // vacationsFollowed: {
-    //     type: [VacationFollowSchema],
-    //     default: null
-    // }
+    vacationsFollowed: {
+        type: [],
+        default: null
+    }
 
 });
 

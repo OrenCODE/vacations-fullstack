@@ -4,23 +4,6 @@ const router = express.Router();
 
 // Load Vacation Model
 const Vacation = require('../../models/Vacation');
-const Follow = require('../../models/Follow');
-
-// router.get('/test/', (req, res) => {
-//         Vacation.aggregate([
-//             {
-//                 $lookup:
-//                     {
-//                         from: "followers",
-//                         localField: "vacations_ID",
-//                         foreignField: "vacationId_ID",
-//                         as: "FOLLOWERS"
-//                     }
-//             }])
-//             .sort({numOfFollowers: -1})
-//             .then(vacations => res.json(vacations))
-//     }
-// );
 
 // @route   GET api/vacations
 // @desc    get all vacations
@@ -33,15 +16,19 @@ router.get('/', passport.authenticate('jwt', {session: false}),
         .then(vacations => res.json(vacations))
 });
 
+// @route   GET api/vacations/:id
+// @desc    get vacation by id
+// @access  private for Admin
+
 router.get('/:id', (req, res) => {
     Vacation.findById(req.params.id).then(vacation => res.json(vacation))
 });
 
 // @route   POST api/vacations
 // @desc    creates new vacation
-// @access  public
+// @access  private for Admin
 
-//FIX RESPONSE HERE//
+// FIX RESPONSE HERE WITH VALIDATION //
 router.post('/', (req, res) => {
     const newVacation = new Vacation({
         description: req.body.description,
@@ -49,8 +36,7 @@ router.post('/', (req, res) => {
         photoURL: req.body.photoURL,
         startDate: req.body.startDate,
         endDate: req.body.endDate,
-        price: req.body.price,
-        // numOfFollowers: req.body.numOfFollowers
+        price: req.body.price
     });
 
     newVacation.save()
@@ -59,7 +45,7 @@ router.post('/', (req, res) => {
 
 // @route   DELETE api/vacations
 // @desc    delete vacation by id
-// @access  public
+// @access  private for Admin
 
 router.delete('/:id', (req, res) => {
     Vacation.findById(req.params.id).then(vacation =>
@@ -67,11 +53,11 @@ router.delete('/:id', (req, res) => {
         .catch(err => res.status(404).json({success: false}))
 });
 
-// @route   DELETE api/vacations
-// @desc    delete vacation by id
-// @access  public
+// @route   PUT api/vacations
+// @desc    edit vacation by id
+// @access  private for Admin
 
-//FIX VACATION PUT METHOD BODY//
+// FIX RESPONSE HERE WITH VALIDATION //
 router.put('/update/:id', (req, res) => {
     Vacation.findByIdAndUpdate({_id: req.params.id}, req.body).then(() => {
         Vacation.findOne({_id: req.params.id}).then((vacation) => {

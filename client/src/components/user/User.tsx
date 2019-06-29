@@ -39,7 +39,7 @@ class User extends Component <IUserProps, IUserState> {
         const bearerToken = localStorage.getItem('jwtToken');
         // console.log(id, bearerToken);
 
-        axios.post(`api/followers/${id}`, {headers: {Authorization: bearerToken}})
+        axios.put(`api/users/follow/${id}`, {headers: {Authorization: bearerToken}})
             .then((res) => {
                 axios.get('/api/vacations/')
                     .then(res => this.setState({

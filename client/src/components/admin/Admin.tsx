@@ -47,6 +47,7 @@ class Admin extends Component <IAdminProps, IAdminState> {
 
     onVacationEdited = (id: string, editedVacationData: any) => {
         console.log(id, editedVacationData);
+        // FIX THIS PART WITH THE STATE
         axios.get('/api/vacations')
             .then(res => this.setState({
                 vacations: res.data
