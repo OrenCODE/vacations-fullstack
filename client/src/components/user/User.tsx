@@ -3,10 +3,11 @@ import {connect} from 'react-redux';
 import {authObject, History} from "../../interface/types";
 import axios from 'axios';
 import Vacation, {IVacationProps} from "./Vacation";
+import * as _ from 'lodash';
 
 interface IUserState {
     vacations: IVacationProps[]
-    vacationsFollowed: Record<any, any>[]
+    userFollows: Record<any, any>[]
 }
 
 export interface IUserProps {
@@ -20,7 +21,7 @@ class User extends Component <IUserProps, IUserState> {
         super(props);
         this.state = {
             vacations: [],
-            vacationsFollowed: []
+            userFollows: []
         }
     }
 
@@ -40,7 +41,7 @@ class User extends Component <IUserProps, IUserState> {
             const bearerToken = localStorage.getItem('jwtToken');
 
             axios.get(`api/users/current/follow/${userId}`, {headers: {Authorization: bearerToken}})
-                .then((res) => this.setState({vacationsFollowed: res.data}))
+                .then((res) => this.setState({userFollows: res.data}))
                 .catch(err => console.log(err.response.data))
         }
     }
@@ -51,7 +52,7 @@ class User extends Component <IUserProps, IUserState> {
         axios.put(`api/users/follow/${vacationId}`, {headers: {Authorization: bearerToken}})
             .then((res) => {
                 this.setState({
-                    vacationsFollowed: res.data
+                    userFollows: res.data
                 });
                 axios.get('/api/vacations/')
                     .then(res => this.setState({
@@ -64,12 +65,18 @@ class User extends Component <IUserProps, IUserState> {
 
     render() {
         const {auth} = this.props;
-        const {vacations} = this.state;
+        const {vacations, userFollows} = this.state;
+        const follow = userFollows.map(follow => follow._id);
+        const [vacationsFollowed, vacationsNotFollowed] = _.partition(vacations, (vacation) => follow.includes(vacation._id));
+
         return (
             <div className="container">
                 <h3 className="lead">Hello {auth.user.firstName} {auth.user.lastName}</h3>
                 <div className="row">
-                    {vacations.map(vacation =>
+                    {vacationsFollowed.map(vacation =>
+                        <Vacation key={vacation._id} {...vacation} onFollow={this.onFollow}/>
+                    )}
+                    {vacationsNotFollowed.map(vacation =>
                         <Vacation key={vacation._id} {...vacation} onFollow={this.onFollow}/>
                     )}
                 </div>

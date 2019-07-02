@@ -128,14 +128,14 @@ router.put('/follow/:id', passport.authenticate('jwt', {session: false}),
         const errors = {};
         User.findOne({
             _id: req.user.id,
-            vacationsFollowed: {$elemMatch: {[req.params.id]: "vacation"}}
+            vacationsFollowed: {$elemMatch: {_id: req.params.id}}
         })
             .then(vacationId => {
                 if (vacationId) {
                     errors.alreadyfollowed = 'You already followed this vacation';
                     return res.status(400).json(errors);
                 } else {
-                    User.findOneAndUpdate({_id: req.user.id}, {$push: {vacationsFollowed: {[req.params.id]: "vacation"}}})
+                    User.findOneAndUpdate({_id: req.user.id}, {$push: {vacationsFollowed: {_id: req.params.id}}})
                         .then(() => {
                             User.findOne({
                                 _id: req.user.id
@@ -144,7 +144,7 @@ router.put('/follow/:id', passport.authenticate('jwt', {session: false}),
                                     Vacation.updateOne({_id: req.params.id}, {$inc: {numOfFollowers: 1}}, {new: true})
                                         .then(() => {
                                             res.status(200);
-                                            res.json(follow);
+                                            res.json(follow.vacationsFollowed);
                                         });
                                 });
                         })
@@ -182,7 +182,7 @@ router.get('/current/follow/:id', passport.authenticate('jwt', {session: false})
         User.findOne({_id: req.params.id})
             .then(user =>{
                 res.status(200);
-                res.json(user)
+                res.json(user.vacationsFollowed)
             })
     });
 

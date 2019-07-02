@@ -11,7 +11,7 @@ import {createVacation} from "../../actions/AdminActions";
 import {IAdminProps} from "./Admin";
 import {errObject} from "../../interface/types";
 
-export interface IAddVacationState {
+export interface IModifyVacationState {
     description: string,
     destination: string,
     photoURL: string,
@@ -21,8 +21,8 @@ export interface IAddVacationState {
     errors: errObject
 }
 
-class AddVacation extends Component <IAdminProps, IAddVacationState> {
-    state: IAddVacationState = {
+class AddVacation extends Component <IAdminProps, IModifyVacationState> {
+    state: IModifyVacationState = {
         description: '',
         destination: '',
         photoURL: '',
@@ -63,7 +63,7 @@ class AddVacation extends Component <IAdminProps, IAddVacationState> {
     };
 
     onChange = (event: any) => {
-        this.setState({[event.target.name]: event.target.value} as IAddVacationState)
+        this.setState({[event.target.name]: event.target.value} as IModifyVacationState)
     };
 
     handleStartDateChange = (Date: Date) => {

@@ -8,12 +8,6 @@ const Vacation = require('../../models/Vacation');
 const User = require('../../models/User');
 const Follow = require('../../models/Follow');
 
-// @route   GET api/followers/test
-// @desc    Tests followers route
-// @access  public
-// router.get('/test', (req, res) => res.json({msg: "followers Works"})
-// );
-
 // @route   GET api/followers
 // @desc    followers route all followers
 // @access  private

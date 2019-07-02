@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import {connect} from 'react-redux';
-import {authObject, errObject, History} from "../../interface/types";
+import {authObject, vacationObject, errObject, History} from "../../interface/types";
 import VacationItem, {IVacationItemProps} from "./VacationItem";
 
 interface IAdminState {
@@ -11,7 +11,7 @@ interface IAdminState {
 export interface IAdminProps {
     auth: authObject
     history: History
-    createVacation: (vacationData: any, history: History) => void
+    createVacation: (vacationData: vacationObject, history: History) => void
     errors: errObject
 }
 
@@ -45,7 +45,7 @@ class Admin extends Component <IAdminProps, IAdminState> {
         })
     };
 
-    onVacationEdited = (id: string, editedVacationData: any) => {
+    onVacationEdited = (id: string, editedVacationData: vacationObject) => {
         console.log(id, editedVacationData);
         // FIX THIS PART WITH THE STATE
         axios.get('/api/vacations')

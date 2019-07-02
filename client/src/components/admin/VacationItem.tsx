@@ -4,6 +4,7 @@ import {deleteVacation} from '../../actions/AdminActions';
 import {formatDate} from "../../utils/formatDate";
 
 import EditModal from '../../components/layout/EditModal';
+import {vacationObject} from "../../interface/types";
 
 interface IVacationItemState {
     preEditFields: IVacationItemProps[]
@@ -22,7 +23,7 @@ export interface IVacationItemProps {
 
     deleteVacation: (id: string) => void
     onVacationDeleted: (id: string) => void
-    onVacationEdited: (id: string, editedVacationData: any) => void
+    onVacationEdited: (id: string, editedVacationData: vacationObject) => void
 }
 
 class VacationItem extends Component <IVacationItemProps, IVacationItemState> {

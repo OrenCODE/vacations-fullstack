@@ -1,22 +1,23 @@
 import React, {Component} from 'react';
 import {Button, Form, Modal} from 'react-bootstrap';
 import {IVacationItemProps} from "../admin/VacationItem";
-import {IAddVacationState} from "../admin/AddVacation";
+import {IModifyVacationState} from "../admin/AddVacation";
 
 import {connect} from 'react-redux';
 import {editVacation} from "../../actions/AdminActions";
 import DatePicker from "react-datepicker";
+import {vacationObject} from "../../interface/types";
 
 interface IEditModalProps {
     modalStatus: boolean
     closeModal: () => void
     preEditFields: IVacationItemProps[]
-    editVacation: (id: string, editedVacationData: any) => void
-    onVacationEdited: (id: string, editedVacationData: Record<any, any>) => void
+    editVacation: (id: string, editedVacationData: vacationObject) => void
+    onVacationEdited: (id: string, editedVacationData: vacationObject) => void
 }
 
-class EditVacationModal extends Component <IEditModalProps, IAddVacationState> {
-    state: IAddVacationState = {
+class EditVacationModal extends Component <IEditModalProps, IModifyVacationState> {
+    state: IModifyVacationState = {
         description: '',
         destination: '',
         photoURL: '',
@@ -47,7 +48,7 @@ class EditVacationModal extends Component <IEditModalProps, IAddVacationState> {
     };
 
     onChange = (event: any) => {
-        this.setState({[event.target.name]: event.target.value} as IAddVacationState)
+        this.setState({[event.target.name]: event.target.value} as IModifyVacationState)
     };
 
     handleStartDateChange = (Date: Date) => {
