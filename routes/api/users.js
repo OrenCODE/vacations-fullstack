@@ -158,7 +158,7 @@ router.put('/follow/:id', passport.authenticate('jwt', {session: false}),
 
 router.delete('/follow/:id', passport.authenticate('jwt', {session: false}),
     (req, res) => {
-        User.findByIdAndUpdate({_id: req.user.id}, {$pull: {vacationsFollowed: {[req.params.id]: "vacation"}}})
+        User.findOneAndUpdate({_id: req.user.id}, {$pull: {vacationsFollowed: {_id: req.params.id}}})
             .then(() => {
                 User.findOne({
                     _id: req.user.id
@@ -167,7 +167,7 @@ router.delete('/follow/:id', passport.authenticate('jwt', {session: false}),
                         Vacation.updateOne({_id: req.params.id}, {$inc: {numOfFollowers: -1}}, {new: true})
                             .then(() => {
                                 res.status(200);
-                                res.json(follow);
+                                res.json(follow.vacationsFollowed);
                             });
                     });
             })

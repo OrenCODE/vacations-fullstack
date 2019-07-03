@@ -16,7 +16,7 @@ interface IEditModalProps {
     onVacationEdited: (id: string, editedVacationData: vacationObject) => void
 }
 
-class EditVacationModal extends Component <IEditModalProps, IModifyVacationState> {
+class EditModal extends Component <IEditModalProps, IModifyVacationState> {
     state: IModifyVacationState = {
         description: '',
         destination: '',
@@ -143,4 +143,4 @@ const mapStateToProps = (state: any) => ({
     errors: state.erorrs
 });
 
-export default connect(mapStateToProps, {editVacation})(EditVacationModal)
+export default connect(mapStateToProps, {editVacation})(EditModal)

@@ -1,13 +1,15 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {authObject, History} from "../../interface/types";
 import axios from 'axios';
-import Vacation, {IVacationProps} from "./Vacation";
 import * as _ from 'lodash';
+
+import {authObject, History, strObject} from "../../interface/types";
+import Vacation, {IVacationProps} from "./Vacation";
+
 
 interface IUserState {
     vacations: IVacationProps[]
-    userFollows: Record<any, any>[]
+    userFollows: strObject[]
 }
 
 export interface IUserProps {
@@ -63,6 +65,22 @@ class User extends Component <IUserProps, IUserState> {
             .catch(err => alert(err.response.data.alreadyfollowed))
     };
 
+    onUnFollow = (vacationId: string) => {
+        const bearerToken = localStorage.getItem('jwtToken');
+
+        axios.delete(`api/users/follow/${vacationId}`, {headers: {Authorization: bearerToken}})
+            .then((res) => {
+                this.setState({
+                    userFollows: res.data
+                });
+                axios.get('/api/vacations/')
+                    .then(res => this.setState({
+                        vacations: res.data
+                    }));
+            })
+            .catch(err => console.log(err.response.data))
+    };
+
     render() {
         const {auth} = this.props;
         const {vacations, userFollows} = this.state;
@@ -74,7 +92,7 @@ class User extends Component <IUserProps, IUserState> {
                 <h3 className="lead">Hello {auth.user.firstName} {auth.user.lastName}</h3>
                 <div className="row">
                     {vacationsFollowed.map(vacation =>
-                        <Vacation key={vacation._id} {...vacation} onFollow={this.onFollow}/>
+                        <Vacation key={vacation._id} {...vacation} onFollow={this.onFollow} onUnFollow={this.onUnFollow} isFollowing={follow}/>
                     )}
                     {vacationsNotFollowed.map(vacation =>
                         <Vacation key={vacation._id} {...vacation} onFollow={this.onFollow}/>

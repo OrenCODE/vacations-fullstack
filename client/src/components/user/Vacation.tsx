@@ -11,7 +11,10 @@ export interface IVacationProps {
     startDate: Date
     endDate: Date
     price: number
+
+    isFollowing: string[]
     onFollow: (id: string) => void
+    onUnFollow: (id: string) => void
 }
 
 class Vacation extends Component <IVacationProps> {
@@ -51,7 +54,11 @@ class Vacation extends Component <IVacationProps> {
                                     <a href="/" className="price-btn">{vacation.price}</a>
                                 </li>
                             </ul>
-                            <button onClick={() => this.props.onFollow(vacation._id)}>Follow</button>
+                            {!this.props.isFollowing ?
+                                <button onClick={() => this.props.onFollow(vacation._id)}>Follow</button> :
+                                <button onClick={() => this.props.onUnFollow(vacation._id)}>UnFollow</button>
+
+                            }
                         </div>
                     </div>
                 </div>
