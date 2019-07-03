@@ -17,6 +17,7 @@ import Register from './components/auth/Register';
 
 import Admin from './components/admin/Admin';
 import AddVacation from './components/admin/AddVacation'
+import Reports from './components/admin/Reports';
 
 import User from './components/user/User';
 
@@ -56,6 +57,7 @@ class App extends Component {
                                 <PrivateRoute exact path="/admin" component={Admin}/>
                                 <PrivateRoute exact path="/dashboard" component={User}/>
                                 <PrivateRoute exact path="/addVacation" component={AddVacation}/>
+                                <PrivateRoute exact path="/reports" component={Reports}/>
                             </Switch>
                         </div>
                         <Footer/>

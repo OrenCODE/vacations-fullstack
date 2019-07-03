@@ -11,10 +11,10 @@ const Vacation = require('../../models/Vacation');
 
 router.get('/', passport.authenticate('jwt', {session: false}),
     (req, res) => {
-    Vacation.find()
-        .sort({startDate: -1})
-        .then(vacations => res.json(vacations))
-});
+        Vacation.find()
+            .sort({startDate: -1})
+            .then(vacations => res.json(vacations))
+    });
 
 // @route   GET api/vacations/:id
 // @desc    get vacation by id
@@ -65,5 +65,16 @@ router.put('/update/:id', (req, res) => {
         })
     })
 });
+
+// @route   GET api/vacations/current/followed
+// @desc    get followed vacations only
+// @access  private for Admin
+
+router.get('/current/followed',
+    (req, res) => {
+        Vacation.find({numOfFollowers: {$gt: 0}})
+            .then(vacations => res.json(vacations))
+    });
+
 
 module.exports = router;
