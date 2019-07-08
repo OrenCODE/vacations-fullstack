@@ -1,33 +1,15 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import {connect} from "react-redux";
 import {Bar, Line, Pie} from 'react-chartjs-2';
-
-//Block for admin only//
+import {Link} from "react-router-dom";
+import {IAdminProps} from "./Admin";
 
 interface IReportsState {
     chartData: Record<any, any>
 }
 
-class Reports extends Component <IReportsState> {
-
-    componentDidMount(): void {
-        axios.get(`api/vacations/current/followed`)
-            .then(res => {
-                const numFollowers = res.data.map((numFollowers: any) => numFollowers.numOfFollowers);
-                const description = res.data.map((description: any) => description.description);
-                this.setState({
-                    chartData: {
-                        labels: description,
-                        datasets: [
-                            {
-                                label: 'User Follows',
-                                data: numFollowers
-                            }
-                        ]
-                    }
-                })
-            })
-    }
+class Reports extends Component <IAdminProps, IReportsState> {
 
     state: IReportsState = {
         chartData: {
@@ -49,33 +31,71 @@ class Reports extends Component <IReportsState> {
         }
     };
 
+    componentDidMount(): void {
+        if (this.props.auth.isAuthenticated && this.props.auth.user.isAdmin === true) {
+            this.props.history.push('/reports');
+
+            const bearerToken = localStorage.getItem('jwtToken');
+            axios.get(`api/vacations/current/followed`, {headers: {Authorization: bearerToken}})
+                .then(res => {
+                    const numFollowers = res.data.map((numFollowers: any) => numFollowers.numOfFollowers);
+                    const description = res.data.map((description: any) => description.description);
+
+                    this.setState({
+                        chartData: {
+                            labels: description,
+                            datasets: [
+                                {
+                                    label: 'User Follows',
+                                    data: numFollowers
+                                }
+                            ]
+                        }
+                    })
+                })
+        } else {
+            this.props.history.push('/dashboard')
+        }
+    }
+
     render() {
         return (
-            <div className="chart">
-                <Bar
-                    data={this.state.chartData}
-                    options={{
-                        title: {
-                            display: true,
-                            text: 'Followed Vacations by Users',
-                            fontSize: 25
-                        },
-                        legend: {
-                            display: true,
-                            position: 'bottom'
-                        },
-                        scales: {
-                            yAxes: [{
-                                ticks: {
-                                    beginAtZero: true
+            <div className="create-profile">
+                <div className="container">
+                    <Link to="/admin" className="btn btn-light">
+                        Go Back
+                    </Link>
+                    <div className="chart">
+                        <Bar
+                            data={this.state.chartData}
+                            options={{
+                                title: {
+                                    display: true,
+                                    text: 'Followed Vacations by Users',
+                                    fontSize: 25
+                                },
+                                legend: {
+                                    display: true,
+                                    position: 'bottom'
+                                },
+                                scales: {
+                                    yAxes: [{
+                                        ticks: {
+                                            beginAtZero: true
+                                        }
+                                    }]
                                 }
-                            }]
-                        }
-                    }}
-                />
+                            }}
+                        />
+                    </div>
+                </div>
             </div>
         );
     }
 }
 
-export default Reports;
+const mapStateToProps = (state: any) => ({
+    auth: state.auth,
+});
+
+export default connect(mapStateToProps)(Reports);

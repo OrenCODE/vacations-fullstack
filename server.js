@@ -33,7 +33,6 @@ const port = process.env.PORT || 5000;
 // Use Routes
 app.use('/api/users', users);
 app.use('/api/vacations', vacations);
-// app.use('/api/followers', followers);
 
 
 app.listen(port, () => console.log(`Server running on port ${port}`));

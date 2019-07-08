@@ -1,9 +1,10 @@
 import axios from 'axios';
 
 import {GET_ERRORS} from "./types";
+import {vacationObject, History} from "../interface/types";
 
 // Add new Vacation
-export const createVacation = (vacationData: any, history: any) => (dispatch: any) => {
+export const createVacation = (vacationData: vacationObject, history: History) => (dispatch: any) => {
     axios
         .post('/api/vacations/', vacationData)
         .then(res => history.push('/admin'))
@@ -16,7 +17,7 @@ export const createVacation = (vacationData: any, history: any) => (dispatch: an
 };
 
 // Delete a vacation
-export const deleteVacation = (id: any) => (dispatch: any) => {
+export const deleteVacation = (id: string) => (dispatch: any) => {
     axios
         .delete(`/api/vacations/${id}`)
         .then(res => console.log(res.data))
@@ -25,7 +26,7 @@ export const deleteVacation = (id: any) => (dispatch: any) => {
 };
 
 // Edit vacation
-export const editVacation = (id: any, editedVacationData: any) => (dispatch: any) => {
+export const editVacation = (id: string, editedVacationData: vacationObject) => (dispatch: any) => {
     // console.log(editedVacationData);
     axios.put(`/api/vacations/update/${id}`, editedVacationData)
         .then(res => console.log(res.data))

@@ -11,19 +11,20 @@ import {vacationObject} from "../../interface/types";
 interface IEditModalProps {
     modalStatus: boolean
     closeModal: () => void
-    preEditFields: IVacationItemProps[]
+    preEditFields: any //FIX HERE
     editVacation: (id: string, editedVacationData: vacationObject) => void
     onVacationEdited: (id: string, editedVacationData: vacationObject) => void
 }
 
 class EditModal extends Component <IEditModalProps, IModifyVacationState> {
+
     state: IModifyVacationState = {
-        description: '',
-        destination: '',
-        photoURL: '',
+        description: this.props.preEditFields.description,
+        destination: this.props.preEditFields.destination,
+        photoURL: this.props.preEditFields.photoURL,
         startDate: new Date(),
         endDate: new Date(),
-        price: 20,
+        price: this.props.preEditFields.price,
         errors: {}
     };
 
@@ -68,7 +69,7 @@ class EditModal extends Component <IEditModalProps, IModifyVacationState> {
                 </Modal.Header>
                 <Form onSubmit={this.onSubmit}>
                     <Modal.Body>
-                        {preEditFields.map((vacationField) => (
+                        {preEditFields.map((vacationField: any) => (
                             <div key={vacationField._id}>
                                 <div className="form-group">
                                     <div>
@@ -119,7 +120,7 @@ class EditModal extends Component <IEditModalProps, IModifyVacationState> {
                                     </small>
                                     <input type="number"
                                            className="form-control form-control-sm"
-                                           placeholder="Price per person"
+                                           placeholder={vacationField.price}
                                            name="price"
                                            value={this.state.price}
                                            onChange={this.onChange}/>

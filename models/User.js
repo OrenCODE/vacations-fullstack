@@ -1,13 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-// const VacationFollowSchema = new Schema({
-//     vacationId: {
-//         type: Schema.Types.ObjectId,
-//         ref: 'vacations'
-//     }
-// });
-
 // Create Schema
 const UserSchema = new Schema({
     firstName: {

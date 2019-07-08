@@ -47,6 +47,9 @@ class Admin extends Component <IAdminProps, IAdminState> {
 
     onVacationEdited = (id: string, editedVacationData: vacationObject) => {
         console.log(id, editedVacationData);
+        // const modifiedVacations = this.state.vacations.slice();
+        // const index = modifiedVacations.findIndex(vacation => vacation._id === id);
+        // modifiedVacations.splice(index, 1, editedVacationData as any);
         // FIX THIS PART WITH THE STATE
         axios.get('/api/vacations')
             .then(res => this.setState({

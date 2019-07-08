@@ -7,7 +7,7 @@ const Vacation = require('../../models/Vacation');
 
 // @route   GET api/vacations
 // @desc    get all vacations
-// @access  private for Admin
+// @access  private for Admin or User
 
 router.get('/', passport.authenticate('jwt', {session: false}),
     (req, res) => {
@@ -67,10 +67,10 @@ router.put('/update/:id', (req, res) => {
 });
 
 // @route   GET api/vacations/current/followed
-// @desc    get followed vacations only
+// @desc    get followed vacations only (reports)
 // @access  private for Admin
 
-router.get('/current/followed',
+router.get('/current/followed', passport.authenticate('jwt', {session: false}),
     (req, res) => {
         Vacation.find({numOfFollowers: {$gt: 0}})
             .then(vacations => res.json(vacations))

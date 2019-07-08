@@ -6,7 +6,6 @@ import * as _ from 'lodash';
 import {authObject, History, strObject} from "../../interface/types";
 import Vacation, {IVacationProps} from "./Vacation";
 
-
 interface IUserState {
     vacations: IVacationProps[]
     userFollows: strObject[]
