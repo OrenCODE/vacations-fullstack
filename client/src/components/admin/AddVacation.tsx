@@ -28,7 +28,7 @@ class AddVacation extends Component <IAdminProps, IModifyVacationState> {
         photoURL: '',
         startDate: new Date(),
         endDate: new Date(),
-        price: 20,
+        price: 100,
         errors: {}
     };
 
@@ -158,7 +158,7 @@ class AddVacation extends Component <IAdminProps, IModifyVacationState> {
                                            value={this.state.price}
                                            onChange={this.onChange}
                                     />
-                                    <small className="form-text text-muted">Lets make some G$
+                                    <small className="form-text text-muted">Lets make some 💰💰💰
                                     </small>
                                 </div>
                                 <input type="submit" className="btn btn-info btn-block mt-4"/>

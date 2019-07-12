@@ -128,7 +128,7 @@ class EditModal extends Component <IEditModalProps, IModifyVacationState> {
                         ))}
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button type={"submit"} variant="primary" onClick={closeModal}>
+                        <Button type={"submit"} variant="info" onClick={closeModal}>
                             Edit Vacation and save changes
                         </Button>
                     </Modal.Footer>

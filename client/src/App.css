@@ -40,6 +40,7 @@ img {
 
 .vacation-item {
     margin: 10px 0;
+    animation: fadein 2ms;
 }
 
 .App {
@@ -59,6 +60,10 @@ img {
     font-size: 1.5rem;
     font-weight: 300;
     line-height: 1.2;
+}
+
+.user-dash, .admin-dash{
+    animation: fadein 2s;
 }
 
 .destinations-area .single-destinations {
@@ -81,10 +86,13 @@ img {
     transition: all 0.3s ease 0s;
 }
 
+.single-destinations{
+    animation: fadein 2s;
+}
+
 .single-destinations .lead {
     background: #fff;
     padding: 10px;
-    animation: fadein 2ms;
 }
 
 .single-destinations .lead h4 {
@@ -253,7 +261,7 @@ button.edit-btn{
 }
 
 .user-name-display-fol {
-    margin: 10px 52px;
+    margin: 10px 63px;
     font-size: 1.5rem;
     font-weight: 300;
     line-height: 1.2;

@@ -5,10 +5,12 @@ import * as _ from 'lodash';
 
 import {authObject, History, strObject} from "../../interface/types";
 import Vacation, {IVacationProps} from "./Vacation";
+import Spinner from '../common/Spinner';
 
 interface IUserState {
     vacations: IVacationProps[]
     userFollows: strObject[]
+    isLoading: boolean
 }
 
 export interface IUserProps {
@@ -22,7 +24,8 @@ class User extends Component <IUserProps, IUserState> {
         super(props);
         this.state = {
             vacations: [],
-            userFollows: []
+            userFollows: [],
+            isLoading: true
         }
     }
 
@@ -34,7 +37,8 @@ class User extends Component <IUserProps, IUserState> {
             axios.get('/api/vacations/')
                 .then(res => {
                     this.setState({
-                        vacations: res.data
+                        vacations: res.data,
+                        isLoading: false
                     })
                 });
 
@@ -82,12 +86,15 @@ class User extends Component <IUserProps, IUserState> {
 
     render() {
         const {auth} = this.props;
-        const {vacations, userFollows} = this.state;
+        const {vacations, userFollows, isLoading} = this.state;
         const follow = userFollows.map(follow => follow._id);
         const [vacationsFollowed, vacationsNotFollowed] = _.partition(vacations, (vacation) => follow.includes(vacation._id));
 
+        if(isLoading) {
+         return <Spinner/>
+        }
         return (
-            <div className="container">
+            <div className="container user-dash">
                 <p className="user-name-display">Welcome {auth.user.firstName} {auth.user.lastName}</p>
                 <div className="row">
                     {vacationsFollowed.map(vacation =>
