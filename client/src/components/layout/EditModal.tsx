@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {Button, Form, Modal} from 'react-bootstrap';
-import {IVacationItemProps} from "../admin/VacationItem";
 import {IModifyVacationState} from "../admin/AddVacation";
 
 import {connect} from 'react-redux';
@@ -11,7 +10,7 @@ import {vacationObject} from "../../interface/types";
 interface IEditModalProps {
     modalStatus: boolean
     closeModal: () => void
-    preEditFields: any //FIX HERE
+    preEditFields: vacationObject
     editVacation: (id: string, editedVacationData: vacationObject) => void
     onVacationEdited: (id: string, editedVacationData: vacationObject) => void
 }
@@ -22,8 +21,8 @@ class EditModal extends Component <IEditModalProps, IModifyVacationState> {
         description: this.props.preEditFields.description,
         destination: this.props.preEditFields.destination,
         photoURL: this.props.preEditFields.photoURL,
-        startDate: new Date(),
-        endDate: new Date(),
+        startDate: this.props.preEditFields.startDate,
+        endDate: this.props.preEditFields.endDate,
         price: this.props.preEditFields.price,
         errors: {}
     };
@@ -65,7 +64,7 @@ class EditModal extends Component <IEditModalProps, IModifyVacationState> {
         return (
             <Modal show={modalStatus} onHide={closeModal}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Edit Vacation</Modal.Title>
+                    <Modal.Title className="user-name-display">Edit Vacation</Modal.Title>
                 </Modal.Header>
                 <Form onSubmit={this.onSubmit}>
                     <Modal.Body>
@@ -79,7 +78,7 @@ class EditModal extends Component <IEditModalProps, IModifyVacationState> {
                                             name={"description"}
                                             type={"text"}
                                             placeholder={vacationField.description}
-                                            value={this.state.description}
+                                            value={this.state.description || ''}
                                             onChange={this.onChange}/>
                                     </div>
                                     <div>
@@ -89,7 +88,7 @@ class EditModal extends Component <IEditModalProps, IModifyVacationState> {
                                             name={"destination"}
                                             type={"text"}
                                             placeholder={vacationField.destination}
-                                            value={this.state.destination}
+                                            value={this.state.destination || ''}
                                             onChange={this.onChange}/>
                                     </div>
                                     <div>
@@ -99,7 +98,7 @@ class EditModal extends Component <IEditModalProps, IModifyVacationState> {
                                             name={"photoURL"}
                                             type={"text"}
                                             placeholder={vacationField.photoURL}
-                                            value={this.state.photoURL}
+                                            value={this.state.photoURL || ''}
                                             onChange={this.onChange}/>
                                     </div>
                                 </div>
@@ -107,12 +106,12 @@ class EditModal extends Component <IEditModalProps, IModifyVacationState> {
                                     <small className="form-text text-muted">Start Date</small>
                                     <DatePicker
                                         className="form-control form-control-sm"
-                                        selected={this.state.startDate}
+                                        selected={this.state.startDate || ''}
                                         onChange={this.handleStartDateChange}/>
                                     <small className="form-text text-muted">End Date</small>
                                     <DatePicker
                                         className="form-control form-control-sm"
-                                        selected={this.state.endDate}
+                                        selected={this.state.endDate || ''}
                                         onChange={this.handleEndDateChange}/>
                                 </div>
                                 <div className="form-group">
@@ -122,7 +121,7 @@ class EditModal extends Component <IEditModalProps, IModifyVacationState> {
                                            className="form-control form-control-sm"
                                            placeholder={vacationField.price}
                                            name="price"
-                                           value={this.state.price}
+                                           value={this.state.price || ''}
                                            onChange={this.onChange}/>
                                 </div>
                             </div>

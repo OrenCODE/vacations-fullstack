@@ -86,7 +86,7 @@ class AddVacation extends Component <IAdminProps, IModifyVacationState> {
                                 Go Back
                             </Link>
                             <h1 className="display-4 text-center">Create Vacation</h1>
-                            <p className="lead text-center">Let's get some information about our vacation</p>
+                            <p className="lead text-center">Let's get some information about our next vacation</p>
                             <small className="d-block pb-3">* = required field</small>
                             <form onSubmit={this.onSubmit}>
                                 <div className="form-group">

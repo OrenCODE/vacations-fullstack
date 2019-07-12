@@ -88,7 +88,7 @@ class User extends Component <IUserProps, IUserState> {
 
         return (
             <div className="container">
-                <h3 className="lead">Hello {auth.user.firstName} {auth.user.lastName}</h3>
+                <p className="user-name-display">Welcome {auth.user.firstName} {auth.user.lastName}</p>
                 <div className="row">
                     {vacationsFollowed.map(vacation =>
                         <Vacation key={vacation._id} {...vacation} onFollow={this.onFollow} onUnFollow={this.onUnFollow} isFollowing={follow}/>

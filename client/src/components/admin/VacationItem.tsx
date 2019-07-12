@@ -39,48 +39,23 @@ class VacationItem extends Component <IVacationItemProps, IVacationItemState> {
         const {onVacationEdited} = this.props;
 
         return (
-            <div className="col-md-4">
-                <div className="single-destinations">
-                    <div className="thumb">
-                        <img src={vacation.photoURL} alt={''}/>
-                    </div>
-                    <button className="btn btn-danger btn-sm" onClick={() => this.onDelete(vacation._id)}>Del</button>
-                    <button className="btn btn-secondary btn-sm" onClick={() => this.onEdit(vacation)}>Edit</button>
-                    <div className="lead">
-                        <h5>{vacation.description}</h5>
-                        <p>
-                            {vacation.destination}
-                        </p>
-                        <ul className="package-list">
-                            <li className="d-flex justify-content-between align-items-center">
-                                <span>Duration</span>
-                                <span>06 days and 7 nights</span>
-                            </li>
-                            <li className="d-flex justify-content-between align-items-center">
-                                <span>Start Date</span>
-                                <span>{formatDate(vacation.startDate)}</span>
-                            </li>
-                            <li className="d-flex justify-content-between align-items-center">
-                                <span>End Date</span>
-                                <span>{formatDate(vacation.endDate)}</span>
-                            </li>
-                            <li className="d-flex justify-content-between align-items-center">
-                                <span>Following</span>
-                                <span>{vacation.numOfFollowers}</span>
-                            </li>
-                            <li className="d-flex justify-content-between align-items-center">
-                                <span>Price per person</span>
-                                <a href="/" className="price-btn">{vacation.price}</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+            <tr>
+                <td>{vacation._id}</td>
+                <td>{vacation.description}</td>
+                <td>{vacation.destination}</td>
+                <td>{vacation.price}</td>
+                <td>{vacation.numOfFollowers}</td>
+                <td>{formatDate(vacation.startDate)} - {formatDate(vacation.endDate)}</td>
+                <td>
+                    <button className="edit-btn" onClick={() => this.onEdit(vacation)}/>
+                    <button className="delete-btn" onClick={() => this.onDelete(vacation._id)}/>
+                </td>
                 <EditModal modalStatus={showEdit}
                            closeModal={this.closeEditModal}
                            preEditFields={preEditFields}
                            onVacationEdited={onVacationEdited}
                 />
-            </div>
+            </tr>
         );
     }
 

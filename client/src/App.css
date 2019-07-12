@@ -1,122 +1,277 @@
 img {
-  width: 100%;
+    width: 100%;
 }
 
 .landing {
-  position: relative;
-  background: url('./img/Vacation.jpg') no-repeat;
-  background-size: cover;
-  background-position: center;
-  height: 100vh;
-  margin-top: -24px;
-  margin-bottom: -50px;
+    position: relative;
+    background: url('./img/Vacation.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    margin-top: -24px;
+    margin-bottom: -50px;
 }
 
 .landing-inner {
-  padding-top: 80px;
+    padding-top: 80px;
 }
 
 .dark-overlay {
-  background-color: rgba(0, 0, 0, 0.7);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 .card-form {
-  opacity: 0.9;
+    opacity: 0.9;
 }
 
 .latest-profiles-img {
-  width: 40px;
-  height: 40px;
+    width: 40px;
+    height: 40px;
 }
 
 .form-control::placeholder {
-  color: #bbb !important;
+    color: #bbb !important;
 }
+
 .vacation-item {
-  float: left;
-  width: 33.33%;
+    margin: 10px 0;
 }
 
 .App {
-  background: #f9f9ff;
+    background: #f9f9ff;
 }
 
-.lead{
-  font-size: 15px;
-  font-weight: 300;
+.lead {
+    font-size: 15px;
+    font-weight: 300;
 }
 
 .package-list {
-  padding: 0;
+    padding: 0;
+}
+
+.user-name-display {
+    font-size: 1.5rem;
+    font-weight: 300;
+    line-height: 1.2;
 }
 
 .destinations-area .single-destinations {
-  margin-top: 30px;
-  -webkit-transition: all 0.3s ease 0s;
-  -moz-transition: all 0.3s ease 0s;
-  -o-transition: all 0.3s ease 0s;
-  transition: all 0.3s ease 0s;
+    margin-top: 30px;
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
 }
 
 .destinations-area .single-destinations .thumb {
-  overflow: hidden;
+    overflow: hidden;
 }
 
 .destinations-area .single-destinations .thumb img {
-  width: 100%;
-  -webkit-transition: all 0.3s ease 0s;
-  -moz-transition: all 0.3s ease 0s;
-  -o-transition: all 0.3s ease 0s;
-  transition: all 0.3s ease 0s;
+    width: 100%;
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
 }
 
 .single-destinations .lead {
-  background: #fff;
-  padding: 10px;
+    background: #fff;
+    padding: 10px;
+    animation: fadein 2ms;
 }
 
 .single-destinations .lead h4 {
-  margin-bottom: 10px;
-  font-weight: 300;
+    margin-bottom: 10px;
+    font-weight: 300;
 }
 
 .single-destinations .lead .package-list {
-  margin-top: 30px;
+    margin-top: 30px;
 }
 
 .single-destinations .lead .package-list li {
-  border-bottom: 1px solid #eee;
-  margin-bottom: 15px;
-  padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
 }
 
 .single-destinations .lead .package-list li:last-child {
-  border-bottom: none;
-  margin-bottom: 0;
+    border-bottom: none;
+    margin-bottom: 0;
 }
 
 .single-destinations .lead .price-btn {
-  background: #f8b600;
-  color: #222;
-  font-weight: 600;
-  padding: 5px 20px;
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+    color: #ffffff;
+    font-weight: 600;
+    padding: 5px 20px;
 }
 
 .single-destinations:hover {
-  box-shadow: 0px 10px 30px 0px rgba(60, 64, 143, 0.2);
+    box-shadow: 0 10px 30px 0 rgba(60, 64, 143, 0.2);
 }
 
-.destinations-area .star .checked {
-  color: orange;
+button.follow-btn {
+    position: absolute;
+    bottom: 286px;
+    right: 23px;
 }
+
+button.unFollow-btn {
+    position: absolute;
+    bottom: 286px;
+    right: 23px;
+}
+
+button.edit-btn{
+    margin: 0 10px 0 0;
+}
+
+.follow-btn {
+    background: url('./img/icons/follow.png') no-repeat;
+    cursor: pointer;
+    border: none;
+    width: 32px;
+    height: 32px;
+}
+
+.unFollow-btn {
+    background: url('./img/icons/unfollow.png') no-repeat;
+    cursor: pointer;
+    border: none;
+    width: 32px;
+    height: 32px;
+}
+
+.delete-btn {
+    background: url('./img/icons/delete.png') no-repeat;
+    cursor: pointer;
+    border: none;
+    width: 32px;
+    height: 32px;
+}
+
+.edit-btn {
+    background: url('./img/icons/edit.png') no-repeat;
+    cursor: pointer;
+    border: none;
+    width: 32px;
+    height: 32px;
+}
+
+/*.single-destinations .follow-btn{*/
+/*  display: none;*/
+/*}*/
+
+/*.single-destinations:hover .follow-btn{*/
+/*  display: inline;*/
+/*  animation: fadein 1s;*/
+/*}*/
+
+/*.single-destinations .unFollow-btn{*/
+/*  display: none;*/
+/*}*/
+
+/*.single-destinations:hover .unFollow-btn{*/
+/*  display: inline;*/
+/*  animation: fadein 1s;*/
+/*}*/
+
+/*.destinations-area .star .checked {*/
+/*  color: orange;*/
+/*}*/
+
 /* Clear floats after the columns */
 .row:after {
-  content: "";
-  display: table;
-  clear: both;
+    content: "";
+    display: table;
+    clear: both;
 }
+
+.table-responsive {
+    animation: fadein 2s;
+}
+
+.table-bordered {
+    border: none;
+}
+
+.modal {
+    top: 56px
+}
+
+.modal-content {
+ border-radius: 0;
+}
+
+.container-flex{
+    padding: 14px 0;
+    display: flex;
+}
+
+.box-1 , .box-2 , .box-3 {
+    flex: 1;
+}
+
+.users-icon {
+    background: url('./img/icons/users.png') no-repeat;
+    margin: 0 50px;
+    border: none;
+    width: 128px;
+    height: 128px;
+}
+
+.followers-icon {
+    background: url('./img/icons/followers.png') no-repeat;
+    margin: 0 50px;
+    border: none;
+    width: 128px;
+    height: 128px;
+}
+
+.vacations-icon {
+    background: url('./img/icons/vacations.png') no-repeat;
+    margin: 0 50px;
+    border: none;
+    width: 128px;
+    height: 128px;
+}
+
+.user-name-display-vac {
+    margin: 10px 51px;
+    font-size: 1.5rem;
+    font-weight: 300;
+    line-height: 1.2;
+}
+
+.user-name-display-fol {
+    margin: 10px 52px;
+    font-size: 1.5rem;
+    font-weight: 300;
+    line-height: 1.2;
+}
+
+.user-name-display-use {
+    margin: 10px 70px;
+    font-size: 1.5rem;
+    font-weight: 300;
+    line-height: 1.2;
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+

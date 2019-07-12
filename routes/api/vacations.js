@@ -76,5 +76,4 @@ router.get('/current/followed', passport.authenticate('jwt', {session: false}),
             .then(vacations => res.json(vacations))
     });
 
-
 module.exports = router;

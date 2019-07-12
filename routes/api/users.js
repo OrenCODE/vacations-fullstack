@@ -186,4 +186,17 @@ router.get('/current/follow/:id', passport.authenticate('jwt', {session: false})
             })
     });
 
+// @route   GET api/users/counter/
+// @desc    get number of users registered
+// @access  Private for admin
+
+router.get('/counter', passport.authenticate('jwt', {session: false}),
+    (req, res) => {
+        User.countDocuments()
+            .then(numOfUsers =>{
+                res.status(200);
+                res.json(numOfUsers)
+            })
+    });
+
 module.exports = router;

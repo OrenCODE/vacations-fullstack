@@ -22,21 +22,21 @@ class Vacation extends Component <IVacationProps> {
     render() {
         const {...vacation} = this.props;
         return (
-                <div className="col-md-4">
+                <div className="col-md-4 vacation-item">
                     <div className="single-destinations">
                         <div className="thumb">
                             <img src={vacation.photoURL} alt={''}/>
                         </div>
                         <div className="lead">
                             <h5>{vacation.description}</h5>
+                            {!this.props.isFollowing ?
+                                <button className="follow-btn" onClick={() => this.props.onFollow(vacation._id)}/> :
+                                <button className="unFollow-btn" onClick={() => this.props.onUnFollow(vacation._id)}/>
+                            }
                             <p>
                                 {vacation.destination}
                             </p>
                             <ul className="package-list">
-                                <li className="d-flex justify-content-between align-items-center">
-                                    <span>Duration</span>
-                                    <span>06 days and 7 nights</span>
-                                </li>
                                 <li className="d-flex justify-content-between align-items-center">
                                     <span>Start Date</span>
                                     <span>{formatDate(vacation.startDate)}</span>
@@ -51,14 +51,9 @@ class Vacation extends Component <IVacationProps> {
                                 </li>
                                 <li className="d-flex justify-content-between align-items-center">
                                     <span>Price per person</span>
-                                    <a href="/" className="price-btn">{vacation.price}</a>
+                                    <span className="price-btn">{vacation.price}</span>
                                 </li>
                             </ul>
-                            {!this.props.isFollowing ?
-                                <button onClick={() => this.props.onFollow(vacation._id)}>Follow</button> :
-                                <button onClick={() => this.props.onUnFollow(vacation._id)}>UnFollow</button>
-
-                            }
                         </div>
                     </div>
                 </div>
