@@ -10,6 +10,7 @@ interface IReportsState {
 }
 
 class Reports extends Component <IAdminProps, IReportsState> {
+    interval: any;
 
     state: IReportsState = {
         chartData: {
@@ -34,28 +35,35 @@ class Reports extends Component <IAdminProps, IReportsState> {
     componentDidMount(): void {
         if (this.props.auth.isAuthenticated && this.props.auth.user.isAdmin === true) {
             this.props.history.push('/reports');
-
-            const bearerToken = localStorage.getItem('jwtToken');
-            axios.get(`api/vacations/current/followed`, {headers: {Authorization: bearerToken}})
-                .then(res => {
-                    const numFollowers = res.data.map((numFollowers: any) => numFollowers.numOfFollowers);
-                    const description = res.data.map((description: any) => description.description);
-
-                    this.setState({
-                        chartData: {
-                            labels: description,
-                            datasets: [
-                                {
-                                    label: 'User Follows',
-                                    data: numFollowers
-                                }
-                            ]
-                        }
-                    })
-                })
+            this.interval = setInterval(() => this.getReports(), 2000);
         } else {
             this.props.history.push('/dashboard')
         }
+    }
+
+    componentWillUnmount(): void {
+        clearInterval(this.interval)
+    }
+
+    getReports(): any {
+        const bearerToken = localStorage.getItem('jwtToken');
+        axios.get(`api/vacations/current/followed`, {headers: {Authorization: bearerToken}})
+            .then(res => {
+                const numFollowers = res.data.map((numFollowers: any) => numFollowers.numOfFollowers);
+                const description = res.data.map((description: any) => description.description);
+
+                this.setState({
+                    chartData: {
+                        labels: description,
+                        datasets: [
+                            {
+                                label: 'User Follows',
+                                data: numFollowers
+                            }
+                        ]
+                    }
+                })
+            })
     }
 
     render() {

@@ -19,6 +19,7 @@ export interface IUserProps {
 }
 
 class User extends Component <IUserProps, IUserState> {
+    interval: any;
 
     constructor(props: any) {
         super(props);
@@ -34,21 +35,33 @@ class User extends Component <IUserProps, IUserState> {
             this.props.history.push('/admin')
         } else {
             this.props.history.push('/dashboard');
-            axios.get('/api/vacations/')
-                .then(res => {
-                    this.setState({
-                        vacations: res.data,
-                        isLoading: false
-                    })
-                });
-
-            const userId = this.props.auth.user.id;
-            const bearerToken = localStorage.getItem('jwtToken');
-
-            axios.get(`api/users/current/follow/${userId}`, {headers: {Authorization: bearerToken}})
-                .then((res) => this.setState({userFollows: res.data}))
-                .catch(err => console.log(err.response.data))
+            this.interval = setInterval(() => this.getUserDashboard(), 2000);
         }
+    }
+
+    componentWillUnmount(): void {
+        clearInterval(this.interval)
+    }
+
+    getUserDashboard(): any {
+        axios.get('/api/vacations/')
+            .then(res => {
+                this.setState({
+                    vacations: res.data,
+                    isLoading: false
+                })
+            });
+
+        const userId = this.props.auth.user.id;
+        const bearerToken = localStorage.getItem('jwtToken');
+
+        axios.get(`api/users/current/follow/${userId}`, {headers: {Authorization: bearerToken}})
+            .then(res => {
+                this.setState({
+                    userFollows: res.data
+                })
+            })
+            .catch(err => console.log(err.response.data))
     }
 
     onFollow = (vacationId: string) => {

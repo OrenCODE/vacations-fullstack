@@ -46,7 +46,7 @@ class Vacation extends Component <IVacationProps> {
                                     <span>{formatDate(vacation.endDate)}</span>
                                 </li>
                                 <li className="d-flex justify-content-between align-items-center">
-                                    <span>Following</span>
+                                    <span>Followers</span>
                                     <span>{vacation.numOfFollowers}</span>
                                 </li>
                                 <li className="d-flex justify-content-between align-items-center">

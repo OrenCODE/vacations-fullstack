@@ -14,7 +14,6 @@ const PrivateRoute = ({component: Component, auth, ...rest}: any) => (
     />
 );
 
-
 const mapStateToProps = (state: any) => ({
     auth: state.auth
 });

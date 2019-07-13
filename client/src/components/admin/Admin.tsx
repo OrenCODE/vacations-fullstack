@@ -22,6 +22,7 @@ export interface IAdminProps {
 }
 
 class Admin extends Component <IAdminProps, IAdminState> {
+    interval: any;
 
     constructor(props: any) {
         super(props);
@@ -35,19 +36,27 @@ class Admin extends Component <IAdminProps, IAdminState> {
     componentDidMount(): void {
         if (this.props.auth.isAuthenticated && this.props.auth.user.isAdmin === true) {
             this.props.history.push('/admin');
-            const bearerToken = localStorage.getItem('jwtToken');
-            axios.get('api/vacations', {headers: {Authorization: bearerToken}})
-                .then(res => this.setState({
-                    vacations: res.data,
-                    isLoading: false
-                }));
-            axios.get('api/users/counter', {headers: {Authorization: bearerToken}})
-                .then(res => this.setState({
-                    numOfUsers: res.data
-                }))
+            this.interval = setInterval(() => this.getAdminDashboard(), 2000);
         } else {
             this.props.history.push('/dashboard')
         }
+    }
+
+    componentWillUnmount(): void {
+        clearInterval(this.interval)
+    }
+
+    getAdminDashboard(): any {
+        const bearerToken = localStorage.getItem('jwtToken');
+        axios.get('api/vacations', {headers: {Authorization: bearerToken}})
+            .then(res => this.setState({
+                vacations: res.data,
+                isLoading: false
+            }));
+        axios.get('api/users/counter', {headers: {Authorization: bearerToken}})
+            .then(res => this.setState({
+                numOfUsers: res.data
+            }))
     }
 
     onVacationDeleted = (id: string) => {
@@ -60,10 +69,6 @@ class Admin extends Component <IAdminProps, IAdminState> {
 
     onVacationEdited = (id: string, editedVacationData: vacationObject) => {
         console.log(id, editedVacationData);
-        // const modifiedVacations = this.state.vacations.slice();
-        // const index = modifiedVacations.findIndex(vacation => vacation._id === id);
-        // modifiedVacations.splice(index, 1, editedVacationData as any);
-        // FIX THIS PART WITH THE STATE
         axios.get('/api/vacations')
             .then(res => this.setState({
                 vacations: res.data
