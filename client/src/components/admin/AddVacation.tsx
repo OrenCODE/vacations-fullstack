@@ -109,7 +109,7 @@ class AddVacation extends Component <IAdminProps, IModifyVacationState> {
                                                'is-invalid': errors.destination
                                            })}
                                            placeholder="Destination"
-                                           name="destination"
+                                           name="destination" required
                                            value={this.state.destination}
                                            onChange={this.onChange}
                                     />
@@ -124,7 +124,7 @@ class AddVacation extends Component <IAdminProps, IModifyVacationState> {
                                                'is-invalid': errors.photoURL
                                            })}
                                            placeholder="Photo"
-                                           name="photoURL"
+                                           name="photoURL" required
                                            value={this.state.photoURL}
                                            onChange={this.onChange}
                                     />
@@ -154,7 +154,7 @@ class AddVacation extends Component <IAdminProps, IModifyVacationState> {
                                     <input type="number"
                                            className="form-control form-control-lg"
                                            placeholder="Price per person"
-                                           name="price"
+                                           name="price" required
                                            value={this.state.price}
                                            onChange={this.onChange}
                                     />
