@@ -22,8 +22,8 @@
             <file pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/client/src/components/user/User.tsx">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="109">
-                    <caret line="106" column="12" lean-forward="true" selection-start-line="106" selection-start-column="8" selection-end-line="106" selection-end-column="21" />
+                  <state relative-caret-position="108">
+                    <caret line="106" selection-start-line="106" selection-end-line="106" />
                     <folding>
                       <element signature="e#0#39#0" expanded="true" />
                     </folding>
@@ -199,8 +199,8 @@
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/server.js" />
         <option value="$PROJECT_DIR$/client/.gitignore" />
-        <option value="$PROJECT_DIR$/client/src/components/user/User.tsx" />
         <option value="$PROJECT_DIR$/client/src/react-app-env.d.ts" />
+        <option value="$PROJECT_DIR$/client/src/components/user/User.tsx" />
       </list>
     </option>
   </component>
@@ -337,12 +337,12 @@
       <workItem from="1562273304944" duration="10095000" />
       <workItem from="1562515338296" duration="6330000" />
       <workItem from="1562670052060" duration="1975000" />
-      <workItem from="1562771119887" duration="67627000" />
+      <workItem from="1562771119887" duration="67931000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="414092000" />
+    <option name="totallyTimeSpent" value="414396000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -355,9 +355,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1283" y="-196" width="1680" height="1027" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16033755" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16033755" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="Project Explorer" order="3" />
@@ -373,7 +372,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32941177" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="TypeScript" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.3647059" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.3647059" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Console" order="12" />
       <window_info anchor="bottom" id="DB Execution Console" order="13" />
@@ -750,20 +749,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/user/User.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="106" selection-start-line="106" selection-end-line="106" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/client/src/react-app-env.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="40">
           <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/user/User.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="106" column="12" lean-forward="true" selection-start-line="106" selection-start-column="8" selection-end-line="106" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>

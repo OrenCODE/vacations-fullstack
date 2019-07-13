@@ -115,13 +115,13 @@ class User extends Component <IUserProps, IUserState> {
             <div className="container user-dash">
                 <p className="user-name-display">Welcome {auth.user.firstName} {auth.user.lastName}</p>
                 <div className="row">
-                    /*
-                    // @ts-ignore */
+                    {/*
+  // @ts-ignore */}
                     {vacationsFollowed.map(vacation =>
                         <Vacation key={vacation._id} {...vacation} onFollow={this.onFollow} onUnFollow={this.onUnFollow} isFollowing={follow}/>
                     )}
-                    /*
-                    // @ts-ignore */
+                    {/*
+  // @ts-ignore */}
                     {vacationsNotFollowed.map(vacation =>
                         <Vacation key={vacation._id} {...vacation} onFollow={this.onFollow}/>
                     )}
