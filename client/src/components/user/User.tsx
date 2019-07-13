@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import axios from 'axios';
-import * as _ from 'lodash';
+import _ from 'lodash';
 
 import {authObject, History, strObject} from "../../interface/types";
 import Vacation, {IVacationProps} from "./Vacation";
