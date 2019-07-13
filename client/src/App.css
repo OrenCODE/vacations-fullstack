@@ -40,7 +40,7 @@ img {
 
 .vacation-item {
     margin: 10px 0;
-    animation: fadein 2ms;
+    animation: fadein 1s;
 }
 
 .App {
@@ -63,7 +63,7 @@ img {
 }
 
 .user-dash, .admin-dash{
-    animation: fadein 2s;
+    animation: fadein 1s;
 }
 
 .destinations-area .single-destinations {
@@ -87,7 +87,7 @@ img {
 }
 
 .single-destinations{
-    animation: fadein 2s;
+    animation: fadein 1s;
 }
 
 .single-destinations .lead {
@@ -175,29 +175,6 @@ button.edit-btn{
     height: 32px;
 }
 
-/*.single-destinations .follow-btn{*/
-/*  display: none;*/
-/*}*/
-
-/*.single-destinations:hover .follow-btn{*/
-/*  display: inline;*/
-/*  animation: fadein 1s;*/
-/*}*/
-
-/*.single-destinations .unFollow-btn{*/
-/*  display: none;*/
-/*}*/
-
-/*.single-destinations:hover .unFollow-btn{*/
-/*  display: inline;*/
-/*  animation: fadein 1s;*/
-/*}*/
-
-/*.destinations-area .star .checked {*/
-/*  color: orange;*/
-/*}*/
-
-/* Clear floats after the columns */
 .row:after {
     content: "";
     display: table;
@@ -205,7 +182,7 @@ button.edit-btn{
 }
 
 .table-responsive {
-    animation: fadein 2s;
+    animation: fadein 1s;
 }
 
 .table-bordered {

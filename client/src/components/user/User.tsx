@@ -40,7 +40,10 @@ class User extends Component <IUserProps, IUserState> {
     }
 
     componentWillUnmount(): void {
-        clearInterval(this.interval)
+        clearInterval(this.interval);
+        this.setState({
+            isLoading: true
+        })
     }
 
     getUserDashboard(): any {

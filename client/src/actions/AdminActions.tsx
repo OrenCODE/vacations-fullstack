@@ -9,10 +9,7 @@ export const createVacation = (vacationData: vacationObject, history: History) =
         .post('/api/vacations/', vacationData)
         .then(res => history.push('/admin'))
         .catch(err =>
-            dispatch({
-                type: GET_ERRORS,
-                payload: err.response.data
-            })
+            console.log(err.response.data)
         );
 };
 
@@ -30,8 +27,5 @@ export const editVacation = (id: string, editedVacationData: vacationObject) => 
     // console.log(editedVacationData);
     axios.put(`/api/vacations/update/${id}`, editedVacationData)
         .then(res => console.log(res.data))
-        .catch(err => dispatch({
-            type: GET_ERRORS,
-            payload: err.response.data
-        }))
+        .catch(err => console.log(err.response.data))
 };

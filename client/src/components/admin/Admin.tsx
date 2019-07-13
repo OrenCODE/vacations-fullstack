@@ -43,7 +43,10 @@ class Admin extends Component <IAdminProps, IAdminState> {
     }
 
     componentWillUnmount(): void {
-        clearInterval(this.interval)
+        clearInterval(this.interval);
+        this.setState({
+            isLoading: true
+        })
     }
 
     getAdminDashboard(): any {

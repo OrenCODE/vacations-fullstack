@@ -3,11 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="37793fda-7222-4c48-b667-bf60c3ab1f8b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/actions/AdminActions.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/actions/AdminActions.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/admin/Admin.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/admin/Admin.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/admin/Reports.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/admin/Reports.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/common/PrivateRoute.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/common/PrivateRoute.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/user/User.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/user/User.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/user/Vacation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/user/Vacation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api/users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api/vacations.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api/vacations.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -19,15 +20,15 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DockManager">
-    <window id="1">
+    <window id="2">
       <content type="file-editors">
         <state>
           <leaf>
             <file pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/client/src/components/user/User.tsx">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="420">
-                    <caret line="43" column="5" lean-forward="true" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
+                  <state relative-caret-position="407">
+                    <caret line="87" column="8" selection-start-line="87" selection-start-column="8" selection-end-line="87" selection-end-column="61" />
                     <folding>
                       <element signature="e#0#39#0" expanded="true" />
                     </folding>
@@ -43,68 +44,23 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/components/user/Vacation.tsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="934">
-              <caret line="47" column="63" lean-forward="true" selection-start-line="47" selection-start-column="63" selection-end-line="47" selection-end-column="63" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/src/components/admin/Admin.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
-              <caret line="37" column="46" selection-start-line="37" selection-start-column="46" selection-end-line="37" selection-end-column="46" />
+            <state relative-caret-position="621">
+              <caret line="64" column="41" lean-forward="true" selection-start-line="64" selection-start-column="41" selection-end-line="64" selection-end-column="41" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
-                <marker date="1562986877000" expanded="true" signature="2184:2306" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/client/src/components/common/PrivateRoute.tsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="14" column="2" selection-start-line="14" selection-start-column="2" selection-end-line="14" selection-end-column="2" />
-              <folding>
-                <element signature="e#0#25#0" expanded="true" />
+                <marker date="1563026696000" expanded="true" signature="2248:2370" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/components/common/Spinner.tsx">
+        <entry file="file://$PROJECT_DIR$/client/src/components/admin/VacationItem.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="3" column="22" lean-forward="true" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/App.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/components/admin/Reports.tsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="15" column="20" lean-forward="true" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
+            <state relative-caret-position="507">
+              <caret line="52" column="22" selection-start-line="52" selection-start-column="22" selection-end-line="52" selection-end-column="22" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -115,11 +71,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/src/components/admin/AddVacation.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="268">
-              <caret line="168" column="18" lean-forward="true" selection-start-line="168" selection-start-column="18" selection-end-line="168" selection-end-column="18" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-1351">
+              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -127,8 +80,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/src/components/layout/EditModal.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2560">
-              <caret line="128" column="33" selection-start-line="128" selection-start-column="33" selection-end-line="128" selection-end-column="33" />
+            <state relative-caret-position="1704">
+              <caret line="145" column="15" selection-start-line="145" selection-start-column="15" selection-end-line="145" selection-end-column="15" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -137,13 +90,55 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/components/admin/VacationItem.tsx">
+        <entry file="file://$PROJECT_DIR$/client/src/components/admin/Reports.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1740">
-              <caret line="87" column="72" selection-start-line="87" selection-start-column="72" selection-end-line="87" selection-end-column="72" />
+            <state relative-caret-position="-351">
+              <caret line="8" column="31" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/src/actions/AdminActions.tsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="420">
+              <caret line="21" column="10" lean-forward="true" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="10" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/src/components/user/Vacation.tsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="18" selection-start-line="18" selection-end-line="18" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/api/users.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/routes/api/vacations.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="700">
+              <caret line="35" column="40" lean-forward="true" selection-start-line="35" selection-start-column="40" selection-end-line="35" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -161,6 +156,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>isAdmin</find>
+      <find>animation</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -204,27 +200,27 @@
         <option value="$PROJECT_DIR$/server.js" />
         <option value="$PROJECT_DIR$/models/User.js" />
         <option value="$PROJECT_DIR$/config/passport.js" />
-        <option value="$PROJECT_DIR$/client/src/actions/AdminActions.tsx" />
-        <option value="$PROJECT_DIR$/routes/api/vacations.js" />
-        <option value="$PROJECT_DIR$/routes/api/users.js" />
         <option value="$PROJECT_DIR$/client/src/components/admin/VacationItem.tsx" />
         <option value="$PROJECT_DIR$/client/src/components/layout/EditModal.tsx" />
         <option value="$PROJECT_DIR$/client/src/components/common/Spinner.tsx" />
-        <option value="$PROJECT_DIR$/client/src/App.css" />
         <option value="$PROJECT_DIR$/client/src/components/user/Vacation.tsx" />
         <option value="$PROJECT_DIR$/client/src/components/admin/AddVacation.tsx" />
+        <option value="$PROJECT_DIR$/client/src/components/common/PrivateRoute.tsx" />
         <option value="$PROJECT_DIR$/client/src/components/user/User.tsx" />
         <option value="$PROJECT_DIR$/client/src/components/admin/Reports.tsx" />
+        <option value="$PROJECT_DIR$/client/src/App.css" />
         <option value="$PROJECT_DIR$/client/src/components/admin/Admin.tsx" />
-        <option value="$PROJECT_DIR$/client/src/components/common/PrivateRoute.tsx" />
+        <option value="$PROJECT_DIR$/routes/api/users.js" />
+        <option value="$PROJECT_DIR$/routes/api/vacations.js" />
+        <option value="$PROJECT_DIR$/client/src/actions/AdminActions.tsx" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="1280" />
-    <option name="y" value="-178" />
+    <option name="y" value="-227" />
     <option name="width" value="1680" />
-    <option name="height" value="964" />
+    <option name="height" value="1027" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -256,6 +252,13 @@
               <item name="vacations" type="462c0819:PsiDirectoryNode" />
               <item name="client" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="actions" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="vacations" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vacations" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -269,7 +272,21 @@
             <path>
               <item name="vacations" type="b2602c69:ProjectViewProjectNode" />
               <item name="vacations" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="vacations" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vacations" type="462c0819:PsiDirectoryNode" />
               <item name="routes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="vacations" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vacations" type="462c0819:PsiDirectoryNode" />
+              <item name="routes" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -346,12 +363,12 @@
       <workItem from="1562273304944" duration="10095000" />
       <workItem from="1562515338296" duration="6330000" />
       <workItem from="1562670052060" duration="1975000" />
-      <workItem from="1562771119887" duration="47489000" />
+      <workItem from="1562771119887" duration="53601000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="393954000" />
+    <option name="totallyTimeSpent" value="400066000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -363,10 +380,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1280" y="-178" width="1680" height="964" extended-state="0" />
+    <frame x="1280" y="-227" width="1680" height="1027" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16033755" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16033755" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="Project Explorer" order="3" />
@@ -382,7 +399,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32941177" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="TypeScript" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.22591743" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.21069519" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Console" order="12" />
       <window_info anchor="bottom" id="DB Execution Console" order="13" />
@@ -647,16 +664,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/actions/AdminActions.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/Vacation.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="571">
@@ -671,69 +678,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/api/vacations.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="57" column="29" selection-start-line="57" selection-start-column="29" selection-end-line="57" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/api/users.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="429">
-          <caret line="198" column="14" lean-forward="true" selection-start-line="198" selection-start-column="14" selection-end-line="198" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/layout/EditModal.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2560">
-          <caret line="128" column="33" selection-start-line="128" selection-start-column="33" selection-end-line="128" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Downloads/index1.js">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/admin/VacationItem.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1740">
-          <caret line="87" column="72" selection-start-line="87" selection-start-column="72" selection-end-line="87" selection-end-column="72" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/admin/AddVacation.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="168" column="18" lean-forward="true" selection-start-line="168" selection-start-column="18" selection-end-line="168" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/admin/Reports.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="15" column="20" lean-forward="true" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/App.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/components/common/Spinner.tsx">
       <provider selected="true" editor-type-id="text-editor">
@@ -745,10 +691,47 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/common/PrivateRoute.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="11" column="16" lean-forward="true" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/App.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1267">
+          <caret line="184" column="13" selection-start-line="184" selection-start-column="4" selection-end-line="184" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/admin/VacationItem.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="507">
+          <caret line="52" column="22" selection-start-line="52" selection-start-column="22" selection-end-line="52" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/layout/EditModal.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1704">
+          <caret line="145" column="15" selection-start-line="145" selection-start-column="15" selection-end-line="145" selection-end-column="15" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/client/src/components/user/Vacation.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="934">
-          <caret line="47" column="63" lean-forward="true" selection-start-line="47" selection-start-column="63" selection-end-line="47" selection-end-column="63" />
+        <state relative-caret-position="360">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
@@ -757,8 +740,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/components/user/User.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="43" column="5" lean-forward="true" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
+        <state relative-caret-position="407">
+          <caret line="87" column="8" selection-start-line="87" selection-start-column="8" selection-end-line="87" selection-end-column="61" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
@@ -767,22 +750,53 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/components/admin/Admin.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="37" column="46" selection-start-line="37" selection-start-column="46" selection-end-line="37" selection-end-column="46" />
+        <state relative-caret-position="621">
+          <caret line="64" column="41" lean-forward="true" selection-start-line="64" selection-start-column="41" selection-end-line="64" selection-end-column="41" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
-            <marker date="1562986877000" expanded="true" signature="2184:2306" ph="..." />
+            <marker date="1563026696000" expanded="true" signature="2248:2370" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/common/PrivateRoute.tsx">
+    <entry file="file://$PROJECT_DIR$/client/src/components/admin/Reports.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="14" column="2" selection-start-line="14" selection-start-column="2" selection-end-line="14" selection-end-column="2" />
+        <state relative-caret-position="-351">
+          <caret line="8" column="31" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
           <folding>
-            <element signature="e#0#25#0" expanded="true" />
+            <element signature="e#0#39#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/admin/AddVacation.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1351">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/api/users.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/actions/AdminActions.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="21" column="10" lean-forward="true" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="10" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/api/vacations.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="700">
+          <caret line="35" column="40" lean-forward="true" selection-start-line="35" selection-start-column="40" selection-end-line="35" selection-end-column="40" />
         </state>
       </provider>
     </entry>
