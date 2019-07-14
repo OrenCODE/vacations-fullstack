@@ -30,11 +30,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/src/store.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="6" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="30" />
+            <state relative-caret-position="160">
+              <caret line="8" column="26" lean-forward="true" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="26" />
               <folding>
                 <element signature="e#0#60#0" expanded="true" />
-                <marker date="1563115742000" expanded="true" signature="260:414" ph="..." />
               </folding>
             </state>
           </provider>
@@ -335,12 +334,12 @@
       <workItem from="1562273304944" duration="10095000" />
       <workItem from="1562515338296" duration="6330000" />
       <workItem from="1562670052060" duration="1975000" />
-      <workItem from="1562771119887" duration="68897000" />
+      <workItem from="1562771119887" duration="69743000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="415362000" />
+    <option name="totallyTimeSpent" value="416208000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -353,9 +352,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1381" y="-77" width="1280" height="734" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2112788" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2112788" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="Project Explorer" order="3" />
@@ -371,7 +369,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32941177" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="TypeScript" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.33489096" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.33489096" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Console" order="12" />
       <window_info anchor="bottom" id="DB Execution Console" order="13" />
@@ -760,11 +758,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/store.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="6" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="30" />
+        <state relative-caret-position="160">
+          <caret line="8" column="26" lean-forward="true" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="26" />
           <folding>
             <element signature="e#0#60#0" expanded="true" />
-            <marker date="1563115742000" expanded="true" signature="260:414" ph="..." />
           </folding>
         </state>
       </provider>
