@@ -105,7 +105,6 @@ class User extends Component <IUserProps, IUserState> {
         const {vacations, userFollows, isLoading} = this.state;
         const follow = userFollows.map(follow => follow._id);
 
-        // @ts-ignore
         const [vacationsFollowed, vacationsNotFollowed] = _.partition(vacations, (vacation) => follow.includes(vacation._id));
 
         if(isLoading) {
@@ -115,13 +114,9 @@ class User extends Component <IUserProps, IUserState> {
             <div className="container user-dash">
                 <p className="user-name-display">Welcome {auth.user.firstName} {auth.user.lastName}</p>
                 <div className="row">
-                    {/*
-  // @ts-ignore */}
                     {vacationsFollowed.map(vacation =>
                         <Vacation key={vacation._id} {...vacation} onFollow={this.onFollow} onUnFollow={this.onUnFollow} isFollowing={follow}/>
                     )}
-                    {/*
-  // @ts-ignore */}
                     {vacationsNotFollowed.map(vacation =>
                         <Vacation key={vacation._id} {...vacation} onFollow={this.onFollow}/>
                     )}

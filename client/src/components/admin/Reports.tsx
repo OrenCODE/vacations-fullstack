@@ -28,7 +28,7 @@ class Reports extends Component <IAdminProps, IReportsState> {
                         'rgba(255,99,132,0.6)'
                     ]
                 }
-            ],
+            ]
         }
     };
 
