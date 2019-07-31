@@ -14,6 +14,10 @@ router.get('/', passport.authenticate('jwt', {session: false}),
         Vacation.find()
             .sort({startDate: -1})
             .then(vacations => res.json(vacations))
+            .catch(err => {
+                console.error(err);
+                res.status(500).send(err);
+            });
     });
 
 // @route   GET api/vacations/:id
@@ -22,6 +26,10 @@ router.get('/', passport.authenticate('jwt', {session: false}),
 
 router.get('/:id', (req, res) => {
     Vacation.findById(req.params.id).then(vacation => res.json(vacation))
+        .catch(err => {
+            console.error(err);
+            res.status(500).send(err);
+        });
 });
 
 // @route   POST api/vacations
@@ -30,17 +38,22 @@ router.get('/:id', (req, res) => {
 
 router.post('/',
     (req, res) => {
+        const {description, destination, photoURL, startDate, endDate, price} = req.body;
         const newVacation = new Vacation({
-            description: req.body.description,
-            destination: req.body.destination,
-            photoURL: req.body.photoURL,
-            startDate: req.body.startDate,
-            endDate: req.body.endDate,
-            price: req.body.price
+            description,
+            destination,
+            photoURL,
+            startDate,
+            endDate,
+            price,
         });
 
         newVacation.save()
             .then(vacation => res.json(vacation))
+            .catch(err => {
+                console.error(err);
+                res.status(500).send(err);
+            });
     });
 
 // @route   DELETE api/vacations
@@ -63,6 +76,10 @@ router.put('/update/:id',
         Vacation.findByIdAndUpdate({_id: req.params.id}, req.body).then(() => {
             Vacation.findOne({_id: req.params.id}).then((vacation) => {
                 res.json(vacation)
+                    .catch(err => {
+                        console.error(err);
+                        res.status(500).send(err);
+                    });
             })
         })
     });
@@ -75,6 +92,10 @@ router.get('/current/followed', passport.authenticate('jwt', {session: false}),
     (req, res) => {
         Vacation.find({numOfFollowers: {$gt: 0}})
             .then(vacations => res.json(vacations))
+            .catch(err => {
+                console.error(err);
+                res.status(500).send(err);
+            });
     });
 
 module.exports = router;

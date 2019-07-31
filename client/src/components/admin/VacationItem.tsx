@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {deleteVacation} from '../../actions/AdminActions';
+import {deleteVacation} from '../../actions/adminActions';
 import {formatDate} from "../../utils/formatDate";
 
 import EditModal from '../../components/layout/EditModal';

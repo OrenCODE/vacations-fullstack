@@ -8,11 +8,6 @@ const VacationSchema = new Schema({
         ref: 'users'
     },
 
-    follower: {
-        type: Schema.Types.ObjectId,
-        ref: 'followers'
-    },
-
     description: {
         type: String,
         required: true

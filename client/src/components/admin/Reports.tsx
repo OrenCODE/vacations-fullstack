@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import {connect} from "react-redux";
-import {Bar, Line, Pie} from 'react-chartjs-2';
+import {Bar} from 'react-chartjs-2';
 import {Link} from "react-router-dom";
 import {IAdminProps} from "./Admin";
 

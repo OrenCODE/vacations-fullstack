@@ -1,6 +1,4 @@
 import axios from 'axios';
-
-import {GET_ERRORS} from "./types";
 import {vacationObject, History} from "../interface/types";
 
 // Add new Vacation

@@ -7,7 +7,7 @@ import {withRouter} from "react-router-dom";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-import {createVacation} from "../../actions/AdminActions";
+import {createVacation} from "../../actions/adminActions";
 import {IAdminProps} from "./Admin";
 import {errObject} from "../../interface/types";
 

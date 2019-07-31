@@ -3,7 +3,7 @@ import {Button, Form, Modal} from 'react-bootstrap';
 import {IModifyVacationState} from "../admin/AddVacation";
 
 import {connect} from 'react-redux';
-import {editVacation} from "../../actions/AdminActions";
+import {editVacation} from "../../actions/adminActions";
 import DatePicker from "react-datepicker";
 import {vacationObject} from "../../interface/types";
 

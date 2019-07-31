@@ -66,10 +66,10 @@ class Navbar extends Component <INavbarProps> {
 
                     <div className="collapse navbar-collapse" id="mobile-nav">
                         <ul className="navbar-nav mr-auto">
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/about"> About
-                                </Link>
-                            </li>
+                            {/*<li className="nav-item">*/}
+                            {/*    <Link className="nav-link" to="/about"> About*/}
+                            {/*    </Link>*/}
+                            {/*</li>*/}
                         </ul>
                         {isAdmin ? adminLinks : null}
                         {isAuthenticated ? authLinks : guestLinks}
