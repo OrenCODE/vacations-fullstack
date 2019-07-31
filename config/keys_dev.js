@@ -1,4 +1,4 @@
 module.exports = {
-    mongoURI: 'mongodb+srv://Oren:12345@vacations-etuyg.mongodb.net/test?retryWrites=true',
+    mongoURI: 'SET_URI_HERE',
     secretOrKey: 'secret'
 };
