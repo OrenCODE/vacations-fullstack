@@ -1,4 +1,15 @@
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+}
+
 img {
+    height: 212px;
     width: 100%;
 }
 
@@ -7,9 +18,7 @@ img {
     background: url('./img/Vacation.jpg') no-repeat;
     background-size: cover;
     background-position: center;
-    height: 100vh;
-    margin-top: -24px;
-    margin-bottom: -50px;
+    height: calc(100vh - 128px);
 }
 
 .landing-inner {
@@ -47,6 +56,17 @@ img {
     background: #f9f9ff;
 }
 
+.register, .login, .admin-dash, .user-dash, .spinner, .admin-add {
+    padding-top: 40px;
+    height: calc(100vh - 128px);
+    overflow-y: auto;
+}
+
+.spinner {
+    display: flex;
+    align-items: center;
+}
+
 .lead {
     font-size: 15px;
     font-weight: 300;
@@ -62,7 +82,7 @@ img {
     line-height: 1.2;
 }
 
-.user-dash, .admin-dash{
+.user-dash, .admin-dash {
     animation: fadein 1s;
 }
 
@@ -86,7 +106,7 @@ img {
     transition: all 0.3s ease 0s;
 }
 
-.single-destinations{
+.single-destinations {
     animation: fadein 1s;
 }
 
@@ -139,7 +159,7 @@ button.unFollow-btn {
     right: 23px;
 }
 
-button.edit-btn{
+button.edit-btn {
     margin: 0 10px 0 0;
 }
 
@@ -194,15 +214,15 @@ button.edit-btn{
 }
 
 .modal-content {
- border-radius: 0;
+    border-radius: 0;
 }
 
-.container-flex{
+.container-flex {
     padding: 14px 0;
     display: flex;
 }
 
-.box-1 , .box-2 , .box-3 {
+.box-1, .box-2, .box-3 {
     flex: 1;
 }
 

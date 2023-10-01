@@ -3,13 +3,13 @@ import spinner from './spinner.svg';
 
 export default () => {
     return (
-        <Fragment>
+        <div className="spinner">
             <img
                 src={spinner}
                 style={{width: '200px', margin: 'auto', display: "block"}}
                 alt="Loading..."
             />
-        </Fragment>
+        </div>
     );
 
 }

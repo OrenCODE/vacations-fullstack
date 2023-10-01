@@ -78,7 +78,7 @@ class AddVacation extends Component <IAdminProps, IModifyVacationState> {
     render() {
         const {errors} = this.state;
         return (
-            <div className="create-profile">
+            <div className="admin-add">
                 <div className="container">
                     <div className="row">
                         <div className="col-md-8 m-auto">
@@ -99,9 +99,7 @@ class AddVacation extends Component <IAdminProps, IModifyVacationState> {
                                            value={this.state.description}
                                            onChange={this.onChange}
                                     />
-                                    {errors.description ? <div className="invalid-feedback">{errors.description}</div> :
-                                        <small className="form-text text-muted">A description of the vacation</small>
-                                    }
+                                    {errors.description && <div className="invalid-feedback">{errors.description}</div>}
                                 </div>
                                 <div className="form-group">
                                     <input type="text"
@@ -113,42 +111,31 @@ class AddVacation extends Component <IAdminProps, IModifyVacationState> {
                                            value={this.state.destination}
                                            onChange={this.onChange}
                                     />
-                                    {errors.destination ? <div className="invalid-feedback">{errors.destination}</div> :
-                                        <small className="form-text text-muted">On which country or a planet
-                                        </small>
-                                    }
+                                    {errors.destination && <div className="invalid-feedback">{errors.destination}</div>}
                                 </div>
                                 <div className="form-group">
                                     <input type="text"
                                            className={classnames("form-control form-control-lg", {
                                                'is-invalid': errors.photoURL
                                            })}
-                                           placeholder="Photo"
+                                           placeholder="Photo URL"
                                            name="photoURL" required
                                            value={this.state.photoURL}
                                            onChange={this.onChange}
                                     />
-                                    {errors.photoURL ? <div className="invalid-feedback">{errors.destination}</div> :
-                                        <small className="form-text text-muted">Feed me with url so I can bring an
-                                            awesome
-                                            photo from the internet
-                                        </small>
-                                    }
+                                    {errors.photoURL && <div className="invalid-feedback">{errors.destination}</div>}
                                 </div>
                                 <div className="form-group">
                                     <DatePicker
                                         className="form-control form-control-lg"
                                         selected={this.state.startDate}
                                         onChange={this.handleStartDateChange}/>
-                                    <small className="form-text text-muted">This day
-                                    </small>
                                 </div>
                                 <div className="form-group">
                                     <DatePicker
                                         className="form-control form-control-lg"
                                         selected={this.state.endDate}
                                         onChange={this.handleEndDateChange}/>
-                                    <small className="form-text text-muted">Till the last day</small>
                                 </div>
                                 <div className="form-group">
                                     <input type="number"
@@ -158,8 +145,6 @@ class AddVacation extends Component <IAdminProps, IModifyVacationState> {
                                            value={this.state.price}
                                            onChange={this.onChange}
                                     />
-                                    <small className="form-text text-muted">Lets make some 💰💰💰
-                                    </small>
                                 </div>
                                 <input type="submit" className="btn btn-info btn-block mt-4"/>
                             </form>

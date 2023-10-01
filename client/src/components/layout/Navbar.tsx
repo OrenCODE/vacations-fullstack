@@ -57,20 +57,15 @@ class Navbar extends Component <INavbarProps> {
         );
 
         return (
-            <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
+            <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
                 <div className="container">
-                    <Link className="navbar-brand" to="/">Vacations Master</Link>
+                    <Link className="navbar-brand" to="/">Vacation Master</Link>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-nav">
                         <span className="navbar-toggler-icon"/>
                     </button>
 
                     <div className="collapse navbar-collapse" id="mobile-nav">
-                        <ul className="navbar-nav mr-auto">
-                            {/*<li className="nav-item">*/}
-                            {/*    <Link className="nav-link" to="/about"> About*/}
-                            {/*    </Link>*/}
-                            {/*</li>*/}
-                        </ul>
+                        <ul className="navbar-nav mr-auto"></ul>
                         {isAdmin ? adminLinks : null}
                         {isAuthenticated ? authLinks : guestLinks}
                     </div>

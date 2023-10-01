@@ -68,7 +68,7 @@ class Reports extends Component <IAdminProps, IReportsState> {
 
     render() {
         return (
-            <div className="create-profile">
+            <div className="admin-dash">
                 <div className="container">
                     <Link to="/admin" className="btn btn-light">
                         Go Back
