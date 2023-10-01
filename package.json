@@ -1,6 +1,10 @@
 {
   "name": "vacations-server-mdb",
   "version": "1.0.0",
+  "engines": {
+    "node": "16.20.1",
+    "npm": "8.19.4"
+  },
   "description": "Vacations website",
   "main": "server.js",
   "scripts": {

@@ -2,6 +2,10 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "16.20.1",
+    "npm": "8.19.4"
+  },
   "dependencies": {
     "@types/classnames": "^2.2.8",
     "@types/history": "^4.7.2",
