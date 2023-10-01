@@ -6,8 +6,11 @@ const path = require('path');
 
 const users = require('./routes/api/users');
 const vacations = require('./routes/api/vacations');
+const cors = require('cors');
 
 const app = express();
+
+app.use(cors({origin: '*'}));
 
 // Body Parser middleware
 app.use(bodyParser.urlencoded({extended: false}));
