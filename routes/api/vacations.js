@@ -9,36 +9,37 @@ const Vacation = require('../../models/Vacation');
 // @desc    get all vacations
 // @access  private for Admin or User
 
-router.get('/', passport.authenticate('jwt', {session: false}),
-    (req, res) => {
-        Vacation.find()
-            .sort({startDate: -1})
-            .then(vacations => res.json(vacations))
-            .catch(err => {
-                console.error(err);
-                res.status(500).send(err);
-            });
-    });
+router.get('/', passport.authenticate('jwt', { session: false }), async (req, res) => {
+    try {
+        const vacations = await Vacation.find().sort({ startDate: -1 });
+        res.json(vacations);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send(err);
+    }
+});
 
 // @route   GET api/vacations/:id
 // @desc    get vacation by id
 // @access  private for Admin
 
-router.get('/:id', (req, res) => {
-    Vacation.findById(req.params.id).then(vacation => res.json(vacation))
-        .catch(err => {
-            console.error(err);
-            res.status(500).send(err);
-        });
+router.get('/:id', async (req, res) => {
+    try {
+        const vacation = await Vacation.findById(req.params.id);
+        res.json(vacation);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send(err);
+    }
 });
 
 // @route   POST api/vacations
-// @desc    creates new vacation
+// @desc    creates a new vacation
 // @access  private for Admin
 
-router.post('/',
-    (req, res) => {
-        const {description, destination, photoURL, startDate, endDate, price} = req.body;
+router.post('/', async (req, res) => {
+    try {
+        const { description, destination, photoURL, startDate, endDate, price } = req.body;
         const newVacation = new Vacation({
             description,
             destination,
@@ -48,54 +49,59 @@ router.post('/',
             price,
         });
 
-        newVacation.save()
-            .then(vacation => res.json(vacation))
-            .catch(err => {
-                console.error(err);
-                res.status(500).send(err);
-            });
-    });
+        const vacation = await newVacation.save();
+        res.json(vacation);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send(err);
+    }
+});
 
 // @route   DELETE api/vacations
 // @desc    delete vacation by id
 // @access  private for Admin
 
-router.delete('/:id',
-    (req, res) => {
-        Vacation.findById(req.params.id).then(vacation =>
-            vacation.remove().then(() => res.json({success: true})))
-            .catch(err => res.status(404).json({success: false}))
-    });
+router.delete('/:id', async (req, res) => {
+    try {
+        const vacation = await Vacation.findById(req.params.id);
+        if (!vacation) {
+            return res.status(404).json({ success: false });
+        }
+        await vacation.remove();
+        res.json({ success: true });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send(err);
+    }
+});
 
 // @route   PUT api/vacations
 // @desc    edit vacation by id
 // @access  private for Admin
 
-router.put('/update/:id',
-    (req, res) => {
-        Vacation.findByIdAndUpdate({_id: req.params.id}, req.body).then(() => {
-            Vacation.findOne({_id: req.params.id}).then((vacation) => {
-                res.json(vacation)
-                    .catch(err => {
-                        console.error(err);
-                        res.status(500).send(err);
-                    });
-            })
-        })
-    });
+router.put('/update/:id', async (req, res) => {
+    try {
+        await Vacation.findByIdAndUpdate({ _id: req.params.id }, req.body);
+        const vacation = await Vacation.findOne({ _id: req.params.id });
+        res.json(vacation);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send(err);
+    }
+});
 
 // @route   GET api/vacations/current/followed
 // @desc    get followed vacations only (reports)
 // @access  private for Admin
 
-router.get('/current/followed', passport.authenticate('jwt', {session: false}),
-    (req, res) => {
-        Vacation.find({numOfFollowers: {$gt: 0}})
-            .then(vacations => res.json(vacations))
-            .catch(err => {
-                console.error(err);
-                res.status(500).send(err);
-            });
-    });
+router.get('/current/followed', passport.authenticate('jwt', { session: false }), async (req, res) => {
+    try {
+        const vacations = await Vacation.find({ numOfFollowers: { $gt: 0 } });
+        res.json(vacations);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send(err);
+    }
+});
 
 module.exports = router;
