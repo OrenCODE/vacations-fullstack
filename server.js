@@ -10,11 +10,13 @@ const cors = require('cors');
 
 const app = express();
 
-app.use(cors({origin: '*'}));
 
 // Body Parser middleware
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
+
+// Cors
+app.use(cors());
 
 // DB Config
 const db = require('./config/keys').mongoURI;
@@ -38,17 +40,10 @@ app.use('/api/users', users);
 app.use('/api/vacations', vacations);
 
 // Server static assets
-// app.use(express.static(path.join(__dirname, 'client/build')));
-//
-// app.get('*', (req, res) => {
-//     res.sendFile(path.join(__dirname + '/client/build/index.html'));
-// });
-
-// Server static assets
-app.use(express.static(path.join(__dirname, 'client/public')));
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname + '/client/public/index.html'));
+    res.sendFile(path.join(__dirname + '/client/build/index.html'));
 });
 
 app.listen(port, () => console.log(`Server running on port ${port}`));
