@@ -6,7 +6,7 @@ import {GET_ERRORS, SET_CURRENT_USER} from "./types";
 
 // Register User
 export const registerUser = (userData: any, history: any) => (dispatch: any) => {
-    axios.post('/api/users/register', userData)
+    axios.post('http://localhost:5000/api/users/register', userData)
         .then(res => history.push('/login'))
         .catch(err =>
             dispatch({
@@ -16,7 +16,7 @@ export const registerUser = (userData: any, history: any) => (dispatch: any) => 
 };
 
 export const loginUser = (userData: any) => (dispatch: any) => {
-    axios.post('/api/users/login', userData)
+    axios.post('http://localhost:5000/api/users/login', userData)
         .then(res => {
 
             // Save to localStorage

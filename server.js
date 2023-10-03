@@ -37,15 +37,18 @@ const port = process.env.PORT || 5000;
 app.use('/api/users', users);
 app.use('/api/vacations', vacations);
 
-// Server static assets if in production
-if (process.env.NODE_ENV === 'production') {
-    // Set static folder
-    app.use(express.static(path.join(__dirname, 'client/build')));
+// Server static assets
+// app.use(express.static(path.join(__dirname, 'client/build')));
+//
+// app.get('*', (req, res) => {
+//     res.sendFile(path.join(__dirname + '/client/build/index.html'));
+// });
 
-    app.get('*', (req, res) => {
-        res.sendFile(path.join(__dirname+'/client/build/index.html'));
-    });
-}
+// Server static assets
+app.use(express.static(path.join(__dirname, 'client/public')));
 
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname + '/client/public/index.html'));
+});
 
 app.listen(port, () => console.log(`Server running on port ${port}`));

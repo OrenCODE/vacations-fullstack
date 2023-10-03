@@ -51,12 +51,12 @@ class Admin extends Component <IAdminProps, IAdminState> {
 
     getAdminDashboard(): any {
         const bearerToken = localStorage.getItem('jwtToken');
-        axios.get('api/vacations', {headers: {Authorization: bearerToken}})
+        axios.get('http://localhost:5000/api/vacations', {headers: {Authorization: bearerToken}})
             .then(res => this.setState({
                 vacations: res.data,
                 isLoading: false
             }));
-        axios.get('api/users/counter', {headers: {Authorization: bearerToken}})
+        axios.get('http://localhost:5000/api/users/counter', {headers: {Authorization: bearerToken}})
             .then(res => this.setState({
                 numOfUsers: res.data
             }))
@@ -72,7 +72,7 @@ class Admin extends Component <IAdminProps, IAdminState> {
 
     onVacationEdited = (id: string, editedVacationData: vacationObject) => {
         console.log(id, editedVacationData);
-        axios.get('/api/vacations')
+        axios.get('http://localhost:5000/api/vacations')
             .then(res => this.setState({
                 vacations: res.data
             }));

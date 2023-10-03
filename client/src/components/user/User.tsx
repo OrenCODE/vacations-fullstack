@@ -47,7 +47,7 @@ class User extends Component <IUserProps, IUserState> {
     }
 
     getUserDashboard(): any {
-        axios.get('/api/vacations/')
+        axios.get('http://localhost:5000/api/vacations/')
             .then(res => {
                 this.setState({
                     vacations: res.data,
@@ -58,7 +58,7 @@ class User extends Component <IUserProps, IUserState> {
         const userId = this.props.auth.user.id;
         const bearerToken = localStorage.getItem('jwtToken');
 
-        axios.get(`api/users/current/follow/${userId}`, {headers: {Authorization: bearerToken}})
+        axios.get(`http://localhost:5000/api/users/current/follow/${userId}`, {headers: {Authorization: bearerToken}})
             .then(res => {
                 this.setState({
                     userFollows: res.data
@@ -75,7 +75,7 @@ class User extends Component <IUserProps, IUserState> {
                 this.setState({
                     userFollows: res.data
                 });
-                axios.get('/api/vacations/')
+                axios.get('http://localhost:5000/api/vacations/')
                     .then(res => this.setState({
                         vacations: res.data
 
@@ -92,7 +92,7 @@ class User extends Component <IUserProps, IUserState> {
                 this.setState({
                     userFollows: res.data
                 });
-                axios.get('/api/vacations/')
+                axios.get('http://localhost:5000/api/vacations/')
                     .then(res => this.setState({
                         vacations: res.data
                     }));

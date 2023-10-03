@@ -47,7 +47,7 @@ class Reports extends Component <IAdminProps, IReportsState> {
 
     getReports(): any {
         const bearerToken = localStorage.getItem('jwtToken');
-        axios.get(`api/vacations/current/followed`, {headers: {Authorization: bearerToken}})
+        axios.get(`http://localhost:5000/api/vacations/current/followed`, {headers: {Authorization: bearerToken}})
             .then(res => {
                 const numFollowers = res.data.map((numFollowers: any) => numFollowers.numOfFollowers);
                 const description = res.data.map((description: any) => description.description);
